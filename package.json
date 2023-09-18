@@ -1,12 +1,13 @@
 {
   "name": "sonia-plumb",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "start": "tsc && vite build -w",
-    "build": "npx prettier . --write && tsc && vite build",
-    "preview": "vite preview"
+    "start": "npm run monitor-wp & tsc && vite build -w",
+    "build": "npm run copy-wp && npx prettier . --write && tsc && vite build",
+    "monitor-wp": "node monitor-wp-files.js",
+    "copy-wp": "cp -r wordpress/* dist-local"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.15",
