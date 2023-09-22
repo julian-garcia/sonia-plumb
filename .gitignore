@@ -12,6 +12,7 @@ dist
 dist-ssr
 dist-local
 *.local
+sonia-plumb.zip
 
 # Editor directories and files
 .vscode/*

@@ -1,0 +1,30 @@
+.header .menu {
+  @apply flex gap-6 justify-between;
+}
+
+.header .menu .sub-menu {
+  @apply h-0 overflow-hidden transition-[height,padding] duration-500
+    bg-slate-700 py-0 px-2;
+}
+
+.header .menu > .menu-item:hover .sub-menu {
+  @apply h-full p-2;
+}
+
+.header .menu-item.menu-item-has-children {
+  @apply relative;
+}
+
+.header .menu-item.menu-item-has-children::before {
+  @apply bg-[url(../images/sub-menu.png)] content-['']
+    bg-no-repeat bg-contain absolute w-3 h-3 -right-3.5
+    top-2 cursor-pointer;
+}
+
+.header .current-menu-item {
+  @apply text-primary;
+}
+
+.header .menu-item {
+  @apply font-medium;
+}

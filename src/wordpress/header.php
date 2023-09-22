@@ -8,8 +8,20 @@
   <title><?php the_title(); ?></title>
   <?php wp_head() ?>
 </head>
-<body class="body">
+<body class="body <?php echo is_front_page() ? 'home' : '' ?>">
+  <div class="container">
   <header class="header">
+    <?php
+      wp_nav_menu(
+        array(
+          'menu' => 'primary',
+          'container' => '',
+          'theme_location' => 'primary',
+          'menu_class' => 'menu'
+        )
+      );
+    ?>
   </header>
-  <main class="">
+  <div class="sidebar"></div>
+  <main class="content">
 

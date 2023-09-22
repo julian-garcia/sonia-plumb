@@ -5,11 +5,12 @@
   "type": "module",
   "scripts": {
     "start": "npm run monitor-wp & tsc && vite build -w",
-    "build": "npm run copy-wp && npx prettier . --write && tsc && vite build",
-    "monitor-wp": "node monitor-wp-files.js",
-    "copy-wp": "cp -r wordpress/* dist-local"
+    "build": "npx prettier . --write && tsc && vite build && npm run copy-wp && node src/package-theme.js",
+    "monitor-wp": "node src/monitor-wp-files.js",
+    "copy-wp": "node src/copy-wp-files.js"
   },
   "devDependencies": {
+    "archiver": "^6.0.1",
     "autoprefixer": "^10.4.15",
     "postcss": "^8.4.29",
     "prettier": "3.0.3",

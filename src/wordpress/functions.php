@@ -9,6 +9,8 @@ function theme_scripts() {
 function setup_menus() {
   $locations = array(
     'primary' => 'Main Menu',
+    'footer_sitemap'  => 'Footer Menu Sitemap',
+    'footer_info'  => 'Footer Menu Info',
   );
   register_nav_menus($locations);
 }

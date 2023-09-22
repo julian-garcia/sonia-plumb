@@ -5,6 +5,6 @@ export default defineConfig({
   build: {
     outDir: 'dist-local',
     emptyOutDir: true,
-    copyPublicDir: false,
+    copyPublicDir: true,
   },
 });
