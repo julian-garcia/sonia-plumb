@@ -2,30 +2,27 @@
 @import './_layout.css';
 @import './_navigation.css';
 @import './_footer.css';
+@import './_slider.css';
+@import './_typography.css';
+@import './_buttons.css';
+@import './_sections.css';
+@import '/node_modules/swiper/swiper-bundle.css';
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  @apply font-poppins bg-black text-white;
+  @apply font-poppins bg-shaded text-black;
 }
 
 p,
 h2,
 h3,
 h4 {
-  @apply mb-4;
+  @apply mb-8;
 }
 
-h2 {
-  @apply text-xl font-medium;
-}
-
-button[type='submit'] {
-  @apply bg-primary text-black p-2 font-medium;
-}
-
-input {
-  @apply text-black p-2 mb-2 w-full;
+.wp-block-separator {
+  @apply max-w-7xl border-button-outline my-14 mx-auto;
 }

@@ -10,18 +10,26 @@
 </head>
 <body class="body <?php echo is_front_page() ? 'home' : '' ?>">
   <div class="container">
-  <header class="header">
+    <a class="logo" href="/"></a>
     <?php
       wp_nav_menu(
         array(
           'menu' => 'primary',
           'container' => '',
           'theme_location' => 'primary',
-          'menu_class' => 'menu'
+          'menu_class' => 'menu menu-navigation'
         )
       );
     ?>
-  </header>
-  <div class="sidebar"></div>
-  <main class="content">
+    <?php
+      wp_nav_menu(
+        array(
+          'menu' => 'contact',
+          'container' => '',
+          'theme_location' => 'contact',
+          'menu_class' => 'menu menu-contact'
+        )
+      );
+    ?>
+    <main class="content">
 

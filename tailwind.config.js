@@ -11,8 +11,10 @@ export default {
         poppins: ['Poppins', 'sans-serif'],
       },
       colors: {
-        primary: '#e53673',
-        secondary: '#6b1a38',
+        'button-active': '#292E99',
+        'button-hover': '#696DB8',
+        'button-outline': '#C8C7C7',
+        shaded: '#E7E7E7',
       },
     },
   },

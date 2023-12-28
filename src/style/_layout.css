@@ -1,40 +1,40 @@
 .container {
-  @apply mx-4 lg:mx-auto w-[1200px] max-w-[calc(100%-2rem)]
+  @apply lg:mx-auto w-[1500px] max-w-full
     grid grid-rows-[60px_1fr_auto]
-    grid-cols-[3fr_1fr_1fr_1fr_1fr]
-    min-h-[calc(100vh-2rem)] gap-4 my-4;
+    grid-cols-[1fr_1fr_1fr_1fr_1fr]
+    min-h-[100vh] gap-4 m-0 p-4 overflow-x-hidden;
   grid-template-areas:
-    '. header header header header'
+    'logo logo logo contact contact'
     'content content content content content'
-    'sidebar footer footer footer footer';
-}
+    'footer footer footer footer footer';
 
-.home .container {
-  grid-template-areas:
-    'sidebar header header header header'
-    'sidebar content content content content'
-    'sidebar footer footer footer footer';
+  @screen md {
+    grid-template-areas:
+      'logo logo navigation contact contact'
+      'content content content content content'
+      'footer footer footer footer footer';
+  }
 }
 
 .content {
-  @apply mt-[-100px];
   grid-area: content;
 }
 
-.home .content {
-  @apply mt-0;
+.menu-navigation {
+  grid-area: navigation;
 }
 
-.header {
-  @apply relative;
-  grid-area: header;
+.menu-contact {
+  grid-area: contact;
 }
 
 .footer {
   grid-area: footer;
 }
 
-.sidebar {
-  grid-area: sidebar;
-  @apply relative bg-[url(../images/cover.jpg)] bg-cover bg-no-repeat bg-center;
+.logo {
+  @apply bg-contain bg-no-repeat bg-left min-h-[50px] relative z-10
+  ml-4 lg:ml-8 mt-6;
+  background-image: url('../images/logo.svg');
+  grid-area: logo;
 }
