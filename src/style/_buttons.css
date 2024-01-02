@@ -1,4 +1,4 @@
-.button,
+.content .button,
 .wp-block-button .wp-block-button__link {
   @apply bg-button-active text-shaded rounded
     hover:bg-button-hover px-8 py-5 inline-block mb-4

@@ -2,7 +2,7 @@
   @apply lg:mx-auto w-[1500px] max-w-full
     grid grid-rows-[60px_1fr_auto]
     grid-cols-[1fr_1fr_1fr_1fr_1fr]
-    min-h-[100vh] gap-4 m-0 p-4 overflow-x-hidden;
+    min-h-[100vh] gap-4 m-0 p-4 overflow-x-hidden relative;
   grid-template-areas:
     'logo logo logo contact contact'
     'content content content content content'

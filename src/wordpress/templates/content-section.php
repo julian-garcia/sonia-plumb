@@ -1,3 +1,3 @@
-<section class="section section-<?php echo $args['align'] ?>">
+<section class="section">
   <?php echo $args['content'] ?>
 </section>

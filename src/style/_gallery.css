@@ -1,0 +1,13 @@
+.swiper.swiper-gallery {
+  @apply max-w-[65rem] mx-auto overflow-visible flex pt-10 -mt-4;
+}
+
+.swiper.swiper-gallery .gallery-image {
+  @apply bg-cover h-[300px] max-h-screen max-w-[100vw];
+}
+
+.swiper.swiper-gallery .swiper-button-prev,
+.swiper.swiper-gallery .swiper-button-next {
+  @apply text-black absolute -top-1 mb-0 bottom-[unset]
+    after:text-2xl;
+}

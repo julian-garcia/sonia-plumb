@@ -1,21 +1,21 @@
 <?php
 $the_query = new WP_Query(
   array(
-    'post_type' => 'performance',
+    'post_type' => 'slide',
     'posts_per_page' => '6'
   )
 );
 if ( $the_query->have_posts() ) : ?>
-<div class="swiper slider swiper-performances">
+<div class="swiper slider swiper-slides">
   <div class="swiper-wrapper">
     <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
       <div class="swiper-slide">
         <div class="image" style="background-image: url('<?php the_post_thumbnail_url() ?>')"></div>
-        <div class="performance-title">
+        <div class="slide-title">
           <div>
-            <?php if (get_field( "performance_link" )): ?>
-              <a href="<?php the_field( "performance_link" ); ?>" class="button">
-                <?php the_field( "performance_text" ); ?>
+            <?php if (get_field( "slide_link" )): ?>
+              <a href="<?php the_field( "slide_link" ); ?>" class="button">
+                <?php the_field( "slide_text" ); ?>
               </a>
             <?php endif; ?>
             <h1><?php the_title(); ?></h1>

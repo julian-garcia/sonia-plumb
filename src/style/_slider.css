@@ -2,7 +2,7 @@
   @apply -mt-[calc(60px+2rem)] -mx-4 relative text-white pb-20;
 }
 
-.swiper.slider .performance-title {
+.swiper.slider .slide-title {
   @apply absolute bottom-12 m-0 block md:flex items-end mx-8 lg:mx-12
     justify-between w-[calc(100%-4rem)] lg:w-[calc(100%-8rem)] gap-4;
 }
@@ -12,7 +12,7 @@
 }
 
 .swiper.slider .image {
-  @apply bg-no-repeat bg-cover bg-top h-[850px] max-h-[calc(100vh-5rem)];
+  @apply bg-no-repeat bg-cover bg-top h-[850px] max-h-[calc(100vh-6rem)];
 }
 
 .swiper.slider .image::after {
@@ -40,16 +40,12 @@
   @apply -left-2;
 }
 
-.slider .swiper-button-prev {
-  @apply after:content-['prev'];
-}
-
 .slider .swiper-button-next {
-  @apply right-12 after:content-['next'];
+  @apply right-0 md:right-12 after:content-['next'];
 }
 
 .slider .swiper-button-prev {
-  @apply right-32 left-[unset];
+  @apply right-14 md:right-32 left-[unset] after:content-['prev'];
 }
 
 .swiper.swiper-works {

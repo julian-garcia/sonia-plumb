@@ -18,15 +18,15 @@ function page_excerpt() {
   add_post_type_support( 'page', 'excerpt' );
 }
 
-function performance_post_type() {
-  register_post_type('performance',
+function slide_post_type() {
+  register_post_type('slide',
     array(
-      'rewrite' => array('slug' => 'performance'),
+      'rewrite' => array('slug' => 'slide'),
       'labels' => array(
-        'name' => 'Performances',
-        'singular_name' => 'Performance',
-        'add_new_item' => 'Add New Performance',
-        'edit_item' => 'Edit Performance'
+        'name' => 'Hero Slides',
+        'singular_name' => 'Slide',
+        'add_new_item' => 'Add New Slide',
+        'edit_item' => 'Edit Slide'
       ),
       'menu_icon' => 'dashicons-megaphone',
       'public' => true,
@@ -42,9 +42,9 @@ function performance_post_type() {
 function works_post_type() {
   register_post_type('works',
     array(
-      'rewrite' => array('slug' => 'works'),
+      'rewrite' => array('slug' => 'stage'),
       'labels' => array(
-        'name' => 'Works',
+        'name' => 'Stage',
         'singular_name' => 'Work',
         'add_new_item' => 'Add New Work',
         'edit_item' => 'Edit Work'
@@ -52,7 +52,8 @@ function works_post_type() {
       'menu_icon' => 'dashicons-portfolio',
       'public' => true,
       'has_archive' => false,
-      'show_in_rest' => false,
+      'show_in_rest' => true,
+      'taxonomies'  => array( 'category' ),
       'supports' => array(
         'title', 'editor', 'thumbnail', 'excerpt'
       )
@@ -60,13 +61,29 @@ function works_post_type() {
   );
 }
 
-function section_shortcode($atts, $content = null) {
-  $default = array(
-    'align' => 'left',
+function team_post_type() {
+  register_post_type('team',
+    array(
+      'rewrite' => array('slug' => 'team'),
+      'labels' => array(
+        'name' => 'Team Member',
+        'singular_name' => 'Team Member',
+        'add_new_item' => 'Add New Team Member',
+        'edit_item' => 'Edit Team Member'
+      ),
+      'menu_icon' => 'dashicons-groups',
+      'public' => true,
+      'has_archive' => false,
+      'show_in_rest' => true,
+      'supports' => array(
+        'title', 'editor', 'thumbnail', 'excerpt'
+      )
+    )
   );
-  $a = shortcode_atts($default, $atts);
+}
+
+function section_shortcode($_,$content = null) {
   $args = array(
-    'align' => $a['align'],
     'content' => $content
   );
   ob_start();
@@ -92,10 +109,10 @@ function shortcode_empty_paragraph_fix( $content ) {
 add_action('wp_enqueue_scripts', 'theme_scripts');
 add_action( 'init', 'setup_menus' );
 add_action( 'init', 'page_excerpt' );
-add_action( 'init', 'performance_post_type' );
+add_action( 'init', 'slide_post_type' );
 add_action( 'init', 'works_post_type' );
+add_action( 'init', 'team_post_type' );
 add_shortcode('section', 'section_shortcode');
 add_shortcode('works', 'works_shortcode');
 add_theme_support( 'post-thumbnails' );
 add_filter( 'the_content', 'shortcode_empty_paragraph_fix' );
-

@@ -1,0 +1,16 @@
+.banner {
+  @apply -mt-[calc(60px+2rem)] -mx-4 mb-16 relative text-white;
+}
+
+.banner .image {
+  @apply bg-no-repeat bg-cover bg-top h-[600px] max-h-[calc(100vh-6rem)];
+}
+
+.banner .image::after {
+  @apply absolute w-full h-full content-[''] top-0 left-0
+  bg-gradient-to-b from-black/80 via-transparent to-black/80;
+}
+
+.banner h1 {
+  @apply absolute left-8 lg:left-12 bottom-12;
+}

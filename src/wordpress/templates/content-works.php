@@ -6,7 +6,7 @@ $the_query = new WP_Query(
   )
 );
 if ( $the_query->have_posts() ) : ?>
-<div class="swiper swiper-works slider">
+<div class="swiper slider swiper-works">
   <div class="swiper-wrapper">
     <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
       <div class="swiper-slide card">
