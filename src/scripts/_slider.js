@@ -21,6 +21,13 @@ export const swiper = new Swiper('.swiper-slides', {
     delay: 6000,
     disableOnInteraction: false,
   },
+  on: {
+    afterInit: (sw) => hoverEffect(sw),
+    slideChange: (sw) => {
+      hoverEffect(sw);
+    },
+    tap: (sw) => sw.slideNext(),
+  },
 });
 
 export const swiperWorks = new Swiper('.swiper-works', {
@@ -54,3 +61,21 @@ export const swiperGallery = new Swiper('.swiper-gallery', {
     prevEl: '.swiper-button-prev',
   },
 });
+
+function hoverEffect(sw) {
+  const prev = sw.activeIndex == 0 ? sw.slides.length - 1 : sw.previousIndex;
+  const hoverImage = document.querySelector(
+    '.swiper-slide-visible #hoverImage'
+  );
+  hoverImage.style.backgroundImage =
+    sw.slides[prev].firstElementChild.style.backgroundImage;
+
+  if (hoverImage) {
+    document.addEventListener('mousemove', function (e) {
+      hoverImage.style.left = e.pageX - 90 + 'px';
+      hoverImage.style.top = e.pageY - 90 + 'px';
+      hoverImage.style.backgroundPositionX = -e.pageX + 90 + 'px';
+      hoverImage.style.backgroundPositionY = -e.pageY + 90 + 'px';
+    });
+  }
+}

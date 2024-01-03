@@ -11,6 +11,7 @@ if ( $the_query->have_posts() ) : ?>
     <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
       <div class="swiper-slide">
         <div class="image" style="background-image: url('<?php the_post_thumbnail_url() ?>')"></div>
+        <div id="hoverImage"></div>
         <div class="slide-title">
           <div>
             <?php if (get_field( "slide_link" )): ?>

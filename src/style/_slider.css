@@ -4,7 +4,7 @@
 
 .swiper.slider .slide-title {
   @apply absolute bottom-12 m-0 block md:flex items-end mx-8 lg:mx-12
-    justify-between w-[calc(100%-4rem)] lg:w-[calc(100%-8rem)] gap-4;
+    justify-between w-[calc(100%-4rem)] lg:w-[calc(100%-8rem)] gap-4 z-20;
 }
 
 .swiper.slider h4 {
@@ -18,6 +18,9 @@
 .swiper.slider .image::after {
   @apply absolute w-full h-full content-[''] top-0 left-0
   bg-gradient-to-b from-black/80 via-transparent to-black/80;
+}
+.swiper.slider .image::before {
+  @apply absolute w-full h-[80px] content-[''] -bottom-[80px] left-0 z-30 bg-shaded;
 }
 
 .swiper.slider .button {
@@ -79,4 +82,14 @@
   .swiper-works .card {
     @apply pb-8;
   }
+}
+
+#hoverImage {
+  @apply h-44 w-44 rounded-full absolute  bg-[length:100vw_auto]
+  bg-[image:none] -left-full -top-full opacity-95;
+}
+
+#hoverImage::after {
+  @apply absolute w-full h-full content-[''] top-0 left-0 rounded-full
+  bg-black/50;
 }

@@ -1,6 +1,6 @@
 .menu {
   @apply hidden md:flex gap-3.5 lg:gap-6 justify-center self-center mx-auto my-0
-    mt-8 relative z-10 text-white;
+    mt-8 relative z-20 text-white;
 }
 
 .menu .sub-menu {
