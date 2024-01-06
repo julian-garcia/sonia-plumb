@@ -1,5 +1,5 @@
 .modal {
-  @apply fixed left-0 top-0 w-full h-full bg-black/50 z-10 scale-0
+  @apply fixed left-0 top-0 w-full h-full bg-black/80 z-10 scale-0
   duration-200 transition-[transform,opacity] opacity-0;
 }
 

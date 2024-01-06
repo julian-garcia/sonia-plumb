@@ -23,9 +23,7 @@ export const swiper = new Swiper('.swiper-slides', {
   },
   on: {
     afterInit: (sw) => hoverEffect(sw),
-    slideChange: (sw) => {
-      hoverEffect(sw);
-    },
+    slideChange: (sw) => hoverEffect(sw),
     tap: (sw) => sw.slideNext(),
   },
 });
@@ -63,19 +61,20 @@ export const swiperGallery = new Swiper('.swiper-gallery', {
 });
 
 function hoverEffect(sw) {
-  const prev = sw.activeIndex == 0 ? sw.slides.length - 1 : sw.previousIndex;
+  const nextIndex =
+    sw.activeIndex == sw.slides.length - 1 ? 0 : sw.activeIndex + 1;
   const hoverImage = document.querySelector(
     '.swiper-slide-visible #hoverImage'
   );
   hoverImage.style.backgroundImage =
-    sw.slides[prev].firstElementChild.style.backgroundImage;
+    sw.slides[nextIndex].firstElementChild.style.backgroundImage;
 
   if (hoverImage) {
     document.addEventListener('mousemove', function (e) {
-      hoverImage.style.left = e.pageX - 90 + 'px';
-      hoverImage.style.top = e.pageY - 90 + 'px';
-      hoverImage.style.backgroundPositionX = -e.pageX + 90 + 'px';
-      hoverImage.style.backgroundPositionY = -e.pageY + 90 + 'px';
+      hoverImage.style.left = e.pageX - 100 + 'px';
+      hoverImage.style.top = e.pageY - 140 + 'px';
+      hoverImage.style.backgroundPositionX = -e.pageX + 100 + 'px';
+      hoverImage.style.backgroundPositionY = -e.pageY + 140 + 'px';
     });
   }
 }

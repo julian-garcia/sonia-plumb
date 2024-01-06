@@ -5,7 +5,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="<?php the_title(); ?>">
-  <title><?php the_title(); ?></title>
+  <title><?php if (is_front_page()) {
+      the_title();
+    } else {
+      echo  get_bloginfo('name') . " | " . get_the_title();
+    } ?></title>
   <?php wp_head() ?>
 </head>
 <body class="body <?php echo is_front_page() ? 'home' : '' ?>">

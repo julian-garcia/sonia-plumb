@@ -19,6 +19,7 @@
   @apply absolute w-full h-full content-[''] top-0 left-0
   bg-gradient-to-b from-black/80 via-transparent to-black/80;
 }
+
 .swiper.slider .image::before {
   @apply absolute w-full h-[80px] content-[''] -bottom-[80px] left-0 z-30 bg-shaded;
 }
@@ -85,11 +86,30 @@
 }
 
 #hoverImage {
-  @apply h-44 w-44 rounded-full absolute  bg-[length:100vw_auto]
-  bg-[image:none] -left-full -top-full opacity-95;
+  @apply h-52 w-52 absolute bg-[length:100vw_auto] cursor-pointer
+  bg-[image:none] -left-full -top-full opacity-90;
+  /* clip-path: url(#blob); */
+  clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+  animation-name: dancingSquares;
+  animation-duration: 4s;
+  animation-direction: alternate-reverse;
+  animation-iteration-count: infinite;
+}
+
+@keyframes dancingSquares {
+  25% {
+    clip-path: polygon(20% 0%, 100% 40%, 70% 100%, 10% 100%);
+  }
+  50% {
+    clip-path: polygon(0% 45%, 100% 20%, 50% 75%, 0% 100%);
+  }
+
+  75% {
+    clip-path: polygon(100% 38%, 100% 38%, 66% 100%, 0% 53%);
+  }
 }
 
 #hoverImage::after {
-  @apply absolute w-full h-full content-[''] top-0 left-0 rounded-full
-  bg-black/50;
+  @apply absolute w-full h-full left-0 top-0
+  content-[''] bg-black/30;
 }
