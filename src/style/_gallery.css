@@ -3,7 +3,8 @@
 }
 
 .swiper.swiper-gallery .gallery-image {
-  @apply bg-cover h-[300px] max-h-screen max-w-[100vw];
+  @apply bg-cover h-[300px] max-h-screen max-w-[100vw] cursor-pointer
+  grayscale hover:grayscale-0 transition-[filter] duration-500;
 }
 
 .swiper.swiper-gallery .swiper-button-prev,

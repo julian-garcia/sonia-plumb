@@ -3,11 +3,11 @@
 }
 
 .swiper.slider .slide-title {
-  @apply absolute bottom-12 m-0 block md:flex items-end mx-8 lg:mx-12
-    justify-between w-[calc(100%-4rem)] lg:w-[calc(100%-8rem)] gap-4 z-20;
+  @apply absolute bottom-12 m-0 block mx-8 lg:mx-12 max-w-[75vw]
+    w-[calc(100%-4rem)] lg:w-[calc(100%-8rem)] z-20;
 }
 
-.swiper.slider h4 {
+.swiper-slides h4 {
   @apply mb-0 mt-4 md:m-0;
 }
 
@@ -34,10 +34,15 @@
     after:text-2xl;
 }
 
+.swiper-slides .swiper-button-prev,
+.swiper-slides .swiper-button-next {
+  @apply bottom-32;
+}
+
 .slider .swiper-button-prev::before,
 .slider .swiper-button-next::before {
-  @apply content-[''] h-12 w-12 absolute bg-button-outline rounded-full
-    -z-10 -right-2 hover:border-button-active border-2 transition-colors;
+  @apply content-[''] h-12 w-12 absolute bg-shaded rounded-full
+    -z-10 -right-2 hover:scale-105 border-2 border-shaded transition-colors;
 }
 
 .slider .swiper-button-prev::before {
@@ -45,11 +50,11 @@
 }
 
 .slider .swiper-button-next {
-  @apply right-0 md:right-12 after:content-['next'];
+  @apply right-4 md:right-12 after:content-['next'];
 }
 
 .slider .swiper-button-prev {
-  @apply right-14 md:right-32 left-[unset] after:content-['prev'];
+  @apply right-20 md:right-32 left-[unset] after:content-['prev'];
 }
 
 .swiper.swiper-works {
@@ -88,7 +93,6 @@
 #hoverImage {
   @apply h-52 w-52 absolute bg-[length:100vw_auto] cursor-pointer
   bg-[image:none] -left-full -top-full opacity-90;
-  /* clip-path: url(#blob); */
   clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
   animation-name: dancingSquares;
   animation-duration: 4s;

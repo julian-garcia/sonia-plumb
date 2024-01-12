@@ -1,0 +1,15 @@
+.categories {
+  @apply block gap-16 my-8 mt-16 sm:flex md:gap-32;
+}
+
+.categories input[type='radio'] {
+  @apply hidden;
+}
+
+.categories label {
+  @apply block cursor-pointer text-2xl mb-3;
+}
+
+.categories .selected {
+  @apply underline-offset-8 border-b-4 border-button-active;
+}

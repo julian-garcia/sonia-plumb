@@ -3,9 +3,17 @@
     mt-8 relative z-20 text-white backdrop-blur-sm;
 }
 
+.menu-navigation {
+  @apply mt-4;
+}
+
+.no-feature .menu {
+  @apply text-black;
+}
+
 .menu .sub-menu {
   @apply overflow-hidden transition-[opacity,padding,visibility] duration-500
-    bg-slate-700 py-0 px-2 absolute opacity-0 delay-300 invisible;
+    bg-slate-700 py-0 px-2 absolute opacity-0 delay-300 invisible text-white;
 }
 
 .menu > .menu-item:hover .sub-menu {
@@ -16,10 +24,22 @@
   @apply text-white;
 }
 
+.no-feature .current-menu-item {
+  @apply text-black;
+}
+
 .menu-item {
   @apply font-medium;
 }
 
 .menu-contact {
   @apply w-full justify-end pr-8 lg:pr-12;
+}
+
+.menu-contact li:last-of-type a {
+  @apply last-of-type:button;
+}
+
+.menu-contact li:first-of-type a {
+  @apply last-of-type:button-light;
 }

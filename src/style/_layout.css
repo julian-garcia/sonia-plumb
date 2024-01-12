@@ -34,7 +34,11 @@
 
 .logo {
   @apply bg-contain bg-no-repeat bg-left min-h-[50px] relative z-10
-  ml-4 lg:ml-8 mt-6;
+  ml-4 lg:ml-8 mt-4;
   background-image: url('../images/logo.svg');
   grid-area: logo;
+}
+
+.no-feature .logo {
+  @apply bg-[image:url('../images/logo-dark.svg')];
 }

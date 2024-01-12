@@ -13,16 +13,12 @@ if ( $the_query->have_posts() ) : ?>
         <div class="image" style="background-image: url('<?php the_post_thumbnail_url() ?>')"></div>
         <div id="hoverImage"></div>
         <div class="slide-title">
-          <div>
-            <?php if (get_field( "slide_link" )): ?>
-              <a href="<?php the_field( "slide_link" ); ?>" class="button">
-                <?php the_field( "slide_text" ); ?>
-              </a>
-            <?php endif; ?>
-            <h1><?php the_title(); ?></h1>
-          </div>
           <h4><?php echo get_the_excerpt(); ?></h4>
+          <h1><?php the_title(); ?></h1>
         </div>
+        <?php if (get_field( "slide_link" )): ?>
+          <a href="<?php the_field( "slide_link" ); ?>" class="absolute w-full h-[calc(100%-8rem)] top-32 left-0 z-30"></a>
+        <?php endif; ?>
       </div>
     <?php endwhile; ?>
     <?php wp_reset_postdata(); ?>
