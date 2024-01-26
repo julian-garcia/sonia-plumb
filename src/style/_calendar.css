@@ -1,0 +1,59 @@
+.calendar {
+  @apply bg-white rounded-md p-8;
+}
+
+.calendar .days {
+  @apply grid grid-cols-7 justify-items-center border-b;
+}
+
+.calendar .day_num {
+  @apply pt-3 h-14 w-full border-t border-l text-center;
+}
+
+.calendar .day_num.selected {
+  @apply bg-button-active text-white;
+}
+
+.calendar .day_num.ignore {
+  @apply bg-inactive text-inactive-text;
+}
+
+.calendar .day_num:nth-child(7n) {
+  @apply border-r;
+}
+
+.calendar-nav {
+  @apply absolute right-8 top-10 z-10 flex gap-4;
+}
+
+.calendar-nav a:first-child:before {
+  @apply content-[url('../images/back.svg')];
+}
+.calendar-nav a:nth-child(2):before {
+  @apply content-[url('../images/next.svg')];
+}
+
+.day_name {
+  @apply font-bold py-4;
+}
+
+.has-events {
+  @apply relative;
+}
+
+.has-events::before {
+  @apply content-[''] absolute w-2 h-2 -bottom-3 left-1/2 -translate-x-1/2
+    rounded-full bg-button-active;
+}
+
+[data-event-ids]:not([data-event-ids='']) {
+  @apply cursor-pointer;
+}
+
+.selected .has-events::before {
+  @apply bg-white;
+}
+
+.event-description {
+  @apply hidden;
+}

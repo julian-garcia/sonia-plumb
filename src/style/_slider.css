@@ -40,7 +40,9 @@
 }
 
 .slider .swiper-button-prev::before,
-.slider .swiper-button-next::before {
+.slider .swiper-button-next::before,
+.testimonials .swiper-button-prev::before,
+.testimonials .swiper-button-next::before {
   @apply content-[''] h-12 w-12 absolute bg-shaded rounded-full
     -z-10 -right-2 hover:scale-105 border-2 border-shaded transition-colors;
 }
@@ -88,6 +90,42 @@
   .swiper-works .card {
     @apply pb-8;
   }
+}
+
+.swiper.testimonials {
+  @apply mt-0 text-black pb-0 pt-20 px-4;
+}
+
+.swiper.testimonials .swiper-slide {
+  @apply pr-0 lg:pr-[200px];
+}
+
+.testimonials .quote {
+  @apply relative;
+}
+
+.testimonials .quote::before,
+.testimonials .quote::after {
+  @apply content-['"'] italic;
+}
+.testimonials .quote::before {
+  @apply -ml-1;
+}
+.testimonials .quote::after {
+  @apply -ml-2;
+}
+
+.testimonials .swiper-button-prev,
+.testimonials .swiper-button-next {
+  @apply top-6 mb-0 bottom-[unset];
+}
+.testimonials .swiper-button-prev::before,
+.testimonials .swiper-button-next::before {
+  @apply bg-button-outline;
+}
+
+.testimonials .author {
+  @apply text-button-active text-right font-medium;
 }
 
 #hoverImage {

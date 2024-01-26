@@ -15,6 +15,8 @@ export default {
         'button-hover': '#696DB8',
         'button-outline': '#C8C7C7',
         shaded: '#E7E7E7',
+        inactive: '#F2F3F7',
+        'inactive-text': '#D5D4DF',
       },
     },
   },

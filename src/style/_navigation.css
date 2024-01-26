@@ -4,7 +4,11 @@
 }
 
 .menu-navigation {
-  @apply mt-4;
+  @apply mt-4 hidden lg:flex;
+}
+
+.menu-navigation > .current-menu-item {
+  @apply border-b-2 border-b-button-active;
 }
 
 .no-feature .menu {
@@ -13,11 +17,23 @@
 
 .menu .sub-menu {
   @apply overflow-hidden transition-[opacity,padding,visibility] duration-500
-    bg-slate-700 py-0 px-2 absolute opacity-0 delay-300 invisible text-white;
+    p-0 absolute opacity-0 delay-300 invisible text-black;
+}
+
+.menu .sub-menu .menu-item {
+  @apply py-2 my-1;
+}
+
+.menu .sub-menu .menu-item a {
+  @apply p-2 my-1 bg-button-outline;
+}
+
+.menu .sub-menu .current-menu-item a {
+  @apply bg-black text-white;
 }
 
 .menu > .menu-item:hover .sub-menu {
-  @apply p-2 opacity-100 translate-y-0 visible;
+  @apply p-0 opacity-100 translate-y-0 visible;
 }
 
 .current-menu-item {
