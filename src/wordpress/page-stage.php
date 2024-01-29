@@ -1,11 +1,27 @@
 <?php
 get_header();
 if (isset($_GET['category'])) {
-  $selected = $_GET['category'];
+  $catArray = explode('_', $_GET['category']);
+  $selected = $catArray[0];
+  if (sizeof($catArray) == 1) {
+    $page = '1';
+  } else {
+    $page = end($catArray);
+  }
 } else {
-  $selected = 'work-in-progress';
-  $_GET['category'] = $selected;
+  $selected = 'repertory';
+  $page = '1';
 }
+$postsPerPage = 3;
+$currentPageNumber = (int)$page;
+$postCount = null;
+$cats = get_terms('category');
+foreach ($cats as $cat) {
+  if ($cat->slug == $selected) {
+    $postCount = $cat->count;
+  }
+}
+$pageTotal = ceil($postCount / $postsPerPage);
 ?>
 <section class="section">
   <form class="categories" method="GET" action="/stage?category=<?php echo $selected ?>" id="stageForm">
@@ -25,17 +41,53 @@ if (isset($_GET['category'])) {
       </label>
     <?php endforeach; ?>
   </form>
-
+  <? if ($pageTotal > 1) : ?>
+    <ul class="pagination flex gap-4 justify-end text-button-outline">
+      <?php for ($i = 1; $i <= $pageTotal; $i++) : ?>
+        <?php if ($i == 1) : ?>
+          <? if ($currentPageNumber == 1) : ?>
+            <li>Prev</li>
+          <?php else : ?>
+            <li>
+              <a href="<?php echo '/stage?category=' . $selected . '_' . $currentPageNumber - 1; ?>" class="text-button-active">Prev</a>
+            </li>
+          <?php endif; ?>
+          <li>/</li>
+        <?php endif; ?>
+        <? if ($currentPageNumber == $i) : ?>
+          <li class="text-button-active"><?php echo $i; ?></li>
+        <?php else : ?>
+          <li>
+            <a href="<?php echo '/stage?category=' . $selected . '_' . $i; ?>" class="!text-button-outline">
+              <?php echo $i; ?>
+            </a>
+          </li>
+        <?php endif; ?>
+        <?php if ($i == $pageTotal) : ?>
+          <li>/</li>
+          <? if ($currentPageNumber == $pageTotal) : ?>
+            <li>Next</li>
+          <?php else : ?>
+            <li class="active">
+              <a href="<?php echo '/stage?category=' . $selected . '_' . $currentPageNumber + 1; ?>" class="text-button-active">Next</a>
+            </li>
+          <?php endif; ?>
+        <?php else : ?>
+          <li>/</li>
+        <?php endif; ?>
+      <?php endfor; ?>
+    </ul>
+  <?php endif; ?>
   <?php
   $the_query = new WP_Query(
     array(
       'post_type' => 'works',
-      'posts_per_page' => '3',
-      'category_name' => $selected
+      'posts_per_page' => $postsPerPage,
+      'category_name' => $selected,
+      'paged' => $page
     )
   );
   if ($the_query->have_posts()) : ?>
-
     <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
       <div class="grid md:grid-cols-2 gap-4 border-y-2 border-button-outline my-8">
         <div class="my-10">
@@ -49,12 +101,6 @@ if (isset($_GET['category'])) {
       </div>
       <?php wp_reset_postdata(); ?>
     <?php endwhile; ?>
-  <?php else : ?>
-    <div class="grid grid-cols-2 gap-4 border-y-2 border-button-outline my-8">
-      <div class="my-10">
-        <h4>Coming soon</h4>
-      </div>
-    </div>
   <?php endif; ?>
 
   <?php the_content(); ?>

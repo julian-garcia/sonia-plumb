@@ -7,11 +7,13 @@
   @apply mt-4 hidden lg:flex;
 }
 
-.menu-navigation > .current-menu-item {
+.menu-navigation > .current-menu-item,
+.current-menu-parent {
   @apply border-b-2 border-b-button-active;
 }
 
-.no-feature .menu {
+.no-feature .menu,
+.team .menu {
   @apply text-black;
 }
 

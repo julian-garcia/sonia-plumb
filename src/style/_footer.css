@@ -1,3 +1,20 @@
 .footer {
-  @apply min-h-[100px] bg-black -m-4 mt-8;
+  @apply min-h-[400px] bg-black -m-4 mt-8 py-12 text-white px-4;
+}
+
+.footer .logo {
+  @apply bg-contain bg-no-repeat bg-left h-[50px] w-[200px] block
+    bg-[url('../images/logo.svg')] m-0;
+}
+
+.menu-footer {
+  @apply hidden sm:block;
+}
+
+.footer .menu-footer li {
+  @apply mb-3 text-white;
+}
+
+.social-link {
+  @apply h-8 w-8 inline-block bg-no-repeat bg-contain bg-center;
 }

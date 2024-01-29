@@ -7,6 +7,10 @@
     w-[calc(100%-4rem)] lg:w-[calc(100%-8rem)] z-20;
 }
 
+.swiper.slider .slide-title h1 {
+  @apply text-6xl;
+}
+
 .swiper-slides h4 {
   @apply mb-0 mt-4 md:m-0;
 }

@@ -12,6 +12,7 @@ function setup_menus()
   $locations = array(
     'primary' => 'Main Menu',
     'contact'  => 'Contact Menu',
+    'footer'  => 'Footer Menu',
   );
   register_nav_menus($locations);
 }
@@ -84,6 +85,7 @@ function team_post_type()
       'public' => true,
       'has_archive' => false,
       'show_in_rest' => true,
+      'taxonomies' => array('category'),
       'supports' => array(
         'title', 'editor', 'thumbnail', 'excerpt'
       )

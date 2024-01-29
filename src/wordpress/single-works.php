@@ -16,42 +16,42 @@
   </div>
   <h2><?php the_title(); ?></h2>
   <?php the_content(); ?>
-  <hr>
 </section>
-<?php if (get_field('artistic_team') or get_field('dancers') or get_field('education_team')) : ?>
+<?php if (get_field('artistic_team') or get_field('dancers') or get_field('education_team') or get_field('music')) : ?>
   <section class="section">
+    <hr>
     <div class="grid sm:grid-cols-2 gap-8 md:gap-16">
-      <div>
-        <?php if (get_field('artistic_team')) : ?>
+      <?php if (get_field('artistic_team')) : ?>
+        <div>
           <h3>Artistic Team</h3>
           <?php foreach (get_field('artistic_team') as $post) : setup_postdata($post); ?>
-            <?php if (in_array('Artistic', get_field('team_member_type'))) : ?>
-              <div class="grid grid-cols-2">
-                <a class="block" href="<?php the_permalink(); ?>">
-                  <?php the_title(); ?>
-                </a>
+            <div class="grid grid-cols-2">
+              <a class="block" href="<?php the_permalink(); ?>">
+                <?php the_title(); ?>
+              </a>
+              <?php if (get_field('team_member_roles')) : ?>
                 <div>
                   <?php foreach (explode(',', get_field('team_member_roles')) as $role) : ?>
                     <p class="m-0"><?php echo $role; ?></p>
                   <?php endforeach; ?>
                 </div>
-              </div>
-            <?php endif;  ?>
+              <?php endif; ?>
+            </div>
           <?php endforeach;
           wp_reset_postdata(); ?>
-        <?php endif; ?>
-      </div>
-      <div>
-        <?php if (get_field('dancers')) : ?>
+        </div>
+      <?php endif; ?>
+      <?php if (get_field('dancers')) : ?>
+        <div>
           <h3>Dancers</h3>
           <?php foreach (get_field('dancers') as $post) : setup_postdata($post); ?>
             <a class="block" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
             <?php wp_reset_postdata(); ?>
           <?php endforeach; ?>
-        <?php endif; ?>
-      </div>
-      <div>
-        <?php if (get_field('education_team')) : ?>
+        </div>
+      <?php endif; ?>
+      <?php if (get_field('education_team')) : ?>
+        <div>
           <h3>Education Team</h3>
           <?php foreach (get_field('education_team') as $post) : setup_postdata($post); ?>
             <div class="grid grid-cols-2">
@@ -66,12 +66,25 @@
             </div>
             <?php wp_reset_postdata(); ?>
           <?php endforeach; ?>
-        <?php endif; ?>
-      </div>
+        </div>
+      <?php endif; ?>
+      <?php if (get_field('music')) : ?>
+        <div>
+          <h3>Music</h3>
+          <?php the_field('music'); ?>
+        </div>
+      <?php endif; ?>
     </div>
-    <hr>
   </section>
 <?php endif; ?>
+
+<?php if (get_field('sponsors')) : ?>
+  <section class="section mt-12">
+    <h3>Sponsors</h3>
+    <?php the_field('sponsors'); ?>
+  </section>
+<?php endif; ?>
+
 <section class="section">
   <?php get_template_part('templates/content', 'testimonials'); ?>
 </section>

@@ -13,6 +13,7 @@ $the_query = new WP_Query(
   )
 );
 if ($the_query->have_posts()) : ?>
+  <hr>
   <div class="swiper slider testimonials">
     <div class="swiper-wrapper">
       <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
@@ -29,5 +30,4 @@ if ($the_query->have_posts()) : ?>
     <div class="swiper-button-next"></div>
     <div class="swiper-pagination"></div>
   </div>
-  <hr>
 <?php endif; ?>
