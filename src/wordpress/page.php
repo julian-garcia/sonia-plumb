@@ -10,6 +10,9 @@
   <h1 class="my-8"><?php the_title(); ?></h1>
 <?php endif; ?>
 <section class="section">
+  <?php if (get_field('weekday')) {
+    get_template_part('templates/content', 'contact');
+  } ?>
   <?php the_content(); ?>
 </section>
 <?php get_footer(); ?>

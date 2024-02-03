@@ -1,0 +1,15 @@
+.container .content .form-wrapper {
+  @apply w-[550px] max-w-full;
+}
+
+.container .content .form-wrapper input {
+  @apply w-full max-w-full rounded-[4px] border-[#E0E0E0];
+}
+
+.container .content .form-wrapper textarea {
+  @apply max-h-40 min-h-[160px] rounded-[4px] border-[#E0E0E0];
+}
+
+.container .content .form-wrapper button {
+  @apply w-full;
+}

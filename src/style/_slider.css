@@ -159,3 +159,48 @@
   @apply absolute w-full h-full left-0 top-0
   content-[''] bg-black/30;
 }
+
+.timeline {
+  @apply grid gap-8 w-full xl:w-[calc(100vw-300px)] max-w-full md:max-w-[unset] overflow-x-scroll grid-flow-col relative;
+}
+
+.timeline-nav {
+  @apply w-8 h-8 inline-block text-center bg-button-outline rounded-full text-2xl leading-snug select-none cursor-pointer;
+}
+
+.timeline-point {
+  @apply bg-[url('../images/point.svg')] bg-contain w-6 h-6 relative;
+}
+
+.timeline-point::after {
+  @apply content-[''] absolute left-6 top-2.5 h-1 w-[calc(300px+1rem)] bg-[#949494];
+}
+
+.timeline-event:last-child .timeline-point::after {
+  @apply bg-gradient-to-r from-[#949494] to-transparent;
+}
+
+.timeline-event {
+  @apply grid min-w-[300px] z-10;
+  grid-template-rows: 1fr 2rem auto 1fr;
+}
+
+.timeline-year {
+  @apply text-button-active my-4;
+}
+
+.timeline-text {
+  @apply self-end;
+}
+
+.timeline-event:nth-child(even) .timeline-point {
+  @apply order-1;
+}
+
+.timeline-event:nth-child(even) .timeline-year {
+  @apply order-2;
+}
+
+.timeline-event:nth-child(even) .timeline-text {
+  @apply order-3 self-start;
+}

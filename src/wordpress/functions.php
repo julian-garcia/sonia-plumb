@@ -54,10 +54,37 @@ function works_post_type()
       'labels' => array(
         'name' => 'Stage',
         'singular_name' => 'Work',
+        'add_new' => 'Add New Work',
         'add_new_item' => 'Add New Work',
         'edit_item' => 'Edit Work'
       ),
       'menu_icon' => 'dashicons-portfolio',
+      'public' => true,
+      'has_archive' => false,
+      'show_in_rest' => true,
+      'taxonomies'  => array('category'),
+      'supports' => array(
+        'title', 'editor', 'thumbnail', 'excerpt'
+      )
+    )
+  );
+}
+
+function class_post_type()
+{
+  register_post_type(
+    'class',
+    array(
+      'rewrite' => array('slug' => 'class'),
+      'labels' => array(
+        'name' => 'Classes',
+        'singular_name' => 'Class',
+        'add_new' => 'Add New Class',
+        'add_new_item' => 'Add New Class',
+        'edit_item' => 'Edit Class'
+      ),
+      'menu_icon' => 'dashicons-welcome-learn-more
+      ',
       'public' => true,
       'has_archive' => false,
       'show_in_rest' => true,
@@ -78,6 +105,7 @@ function team_post_type()
       'labels' => array(
         'name' => 'Team Members',
         'singular_name' => 'Team Member',
+        'add_new' => 'Add New Team Member',
         'add_new_item' => 'Add New Team Member',
         'edit_item' => 'Edit Team Member'
       ),
@@ -102,6 +130,7 @@ function event_post_type()
       'labels' => array(
         'name' => 'Events',
         'singular_name' => 'Event',
+        'add_new' => 'Add New Event',
         'add_new_item' => 'Add New Event',
         'edit_item' => 'Edit Event'
       ),
@@ -126,10 +155,35 @@ function testimonial_post_type()
       'labels' => array(
         'name' => 'Testimonials',
         'singular_name' => 'Testimonial',
+        'add_new' => 'Add New Testimonial',
         'add_new_item' => 'Add New Testimonial',
         'edit_item' => 'Edit Testimonial'
       ),
       'menu_icon' => 'dashicons-format-quote',
+      'public' => true,
+      'has_archive' => false,
+      'show_in_rest' => true,
+      'supports' => array(
+        'title', 'editor'
+      )
+    )
+  );
+}
+
+function timeline_post_type()
+{
+  register_post_type(
+    'timeline',
+    array(
+      'rewrite' => array('slug' => 'timeline'),
+      'labels' => array(
+        'name' => 'Timeline Event',
+        'singular_name' => 'Timeline Event',
+        'add_new' => 'Add New Timeline Event',
+        'add_new_item' => 'Add New Timeline Event',
+        'edit_item' => 'Edit Timeline Event'
+      ),
+      'menu_icon' => 'dashicons-ellipsis',
       'public' => true,
       'has_archive' => false,
       'show_in_rest' => true,
@@ -157,6 +211,20 @@ function works_shortcode()
   return ob_get_clean();
 }
 
+function social_shortcode()
+{
+  ob_start();
+  get_template_part('templates/content', 'social');
+  return ob_get_clean();
+}
+
+function timeline_shortcode()
+{
+  ob_start();
+  get_template_part('templates/content', 'timeline');
+  return ob_get_clean();
+}
+
 function shortcode_empty_paragraph_fix($content)
 {
   $array = array(
@@ -175,7 +243,11 @@ add_action('init', 'works_post_type');
 add_action('init', 'team_post_type');
 add_action('init', 'event_post_type');
 add_action('init', 'testimonial_post_type');
+add_action('init', 'timeline_post_type');
+add_action('init', 'class_post_type');
 add_shortcode('section', 'section_shortcode');
 add_shortcode('works', 'works_shortcode');
+add_shortcode('social', 'social_shortcode');
+add_shortcode('timeline', 'timeline_shortcode');
 add_theme_support('post-thumbnails');
 add_filter('the_content', 'shortcode_empty_paragraph_fix');

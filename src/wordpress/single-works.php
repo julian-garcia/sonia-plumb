@@ -25,16 +25,17 @@
         <div>
           <h3>Artistic Team</h3>
           <?php foreach (get_field('artistic_team') as $post) : setup_postdata($post); ?>
-            <div class="grid grid-cols-2">
-              <a class="block" href="<?php the_permalink(); ?>">
+            <div>
+              <a href="<?php the_permalink(); ?>">
                 <?php the_title(); ?>
               </a>
               <?php if (get_field('team_member_roles')) : ?>
-                <div>
+                /
+                <span>
                   <?php foreach (explode(',', get_field('team_member_roles')) as $role) : ?>
-                    <p class="m-0"><?php echo $role; ?></p>
+                    <?php echo $role; ?>
                   <?php endforeach; ?>
-                </div>
+                </span>
               <?php endif; ?>
             </div>
           <?php endforeach;
@@ -54,15 +55,18 @@
         <div>
           <h3>Education Team</h3>
           <?php foreach (get_field('education_team') as $post) : setup_postdata($post); ?>
-            <div class="grid grid-cols-2">
-              <a class="block" href="<?php the_permalink(); ?>">
+            <div>
+              <a href="<?php the_permalink(); ?>">
                 <?php the_title(); ?>
               </a>
-              <div>
-                <?php foreach (explode(',', get_field('team_member_roles')) as $role) : ?>
-                  <p class="m-0"><?php echo $role; ?></p>
-                <?php endforeach; ?>
-              </div>
+              <?php if (get_field('team_member_roles')) : ?>
+                /
+                <span>
+                  <?php foreach (explode(',', get_field('team_member_roles')) as $role) : ?>
+                    <?php echo $role; ?>
+                  <?php endforeach; ?>
+                </span>
+              <?php endif; ?>
             </div>
             <?php wp_reset_postdata(); ?>
           <?php endforeach; ?>

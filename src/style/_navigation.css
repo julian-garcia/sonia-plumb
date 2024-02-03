@@ -13,7 +13,8 @@
 }
 
 .no-feature .menu,
-.team .menu {
+.team .menu,
+.class .menu {
   @apply text-black;
 }
 

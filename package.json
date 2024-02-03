@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "start": "npm run monitor-wp & tsc && vite build -w",
+    "start": "npm run monitor-wp & (tsc && vite build -w)",
     "build": "npx prettier . --write && tsc && vite build && npm run copy-wp && node src/package-theme.js",
     "monitor-wp": "node src/monitor-wp-files.js",
     "copy-wp": "node src/copy-wp-files.js"

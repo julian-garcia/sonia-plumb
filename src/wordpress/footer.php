@@ -22,7 +22,7 @@
       <div class="flex content-end flex-wrap gap-3 md:justify-self-end">
         <a href="https://www.facebook.com/soniaplumbdance" class="bg-[url('../images/facebook.svg')] social-link" target="_blank"></a>
         <a href="https://twitter.com/SoniaPlumbDance" class="bg-[url('../images/twitter.svg')] social-link" target="_blank"></a>
-        <a href="https://www.instagram.com/soniaplumbdance/" class="bg-[url('../images/instagram.svg')] social-link" target="_blank"></a>
+        <a href="https://www.instagram.com/soniaplumbdance" class="bg-[url('../images/instagram.svg')] social-link" target="_blank"></a>
         <a href="https://www.youtube.com/@soniaplumbdance" class="bg-[url('../images/youtube.svg')] social-link" target="_blank"></a>
       </div>
     </div>

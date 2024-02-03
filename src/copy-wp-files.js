@@ -6,8 +6,12 @@ copyFiles();
 export function copyFiles() {
   readlink('./dist-local', (err, target) => {
     if (!err) {
-      cpSync('./src/wordpress', target, { recursive: true });
-      addAssetHash();
+      try {
+        cpSync('./src/wordpress', target, { recursive: true });
+        addAssetHash();
+      } catch (error) {
+        console.log(error.message);
+      }
     }
   });
 }

@@ -22,7 +22,7 @@ class Calendar
     $num_days_last_month = date('j', strtotime('last day of previous month', strtotime($this->active_day . '-' . $this->active_month . '-' . $this->active_year)));
     $days = [0 => 'Mon', 1 => 'Tue', 2 => 'Wed', 3 => 'Thu', 4 => 'Fri', 5 => 'Sat', 6 => 'Sun'];
     $first_day_of_week = array_search(date('D', strtotime($this->active_year . '-' . $this->active_month . '-1')), $days);
-    $html = '<div id="calendar" class="calendar relative">';
+    $html = '<div id="calendar" class="calendar-dates relative">';
     $html .= '<div class="header">';
     $html .= '<h4 class="month-year">';
     $html .= date('F Y', strtotime($this->active_year . '-' . $this->active_month . '-' . $this->active_day));

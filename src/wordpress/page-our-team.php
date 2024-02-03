@@ -8,7 +8,7 @@ if (isset($_GET['category'])) {
 }
 ?>
 <section class="section">
-  <form class="categories" method="GET" action="/team?category=<?php echo $selected ?>" id="stageForm">
+  <form class="categories" method="GET" action="/our-team?category=<?php echo $selected ?>" id="stageForm">
     <?php
     $categories = get_categories(
       array(
@@ -39,7 +39,7 @@ if (isset($_GET['category'])) {
         <div class="my-10 px-8">
           <h4><?php the_title(); ?></h4>
           <?php if (get_field("position")) : ?>
-            <p class="text-[#949494]"><?php the_field("position"); ?></p>
+            <p class="text-[#949494]"><?php echo get_field("position"); ?></p>
           <?php endif; ?>
           <?php the_excerpt(); ?>
           <a href="<?php the_permalink(); ?>" class="button-outline !text-black">

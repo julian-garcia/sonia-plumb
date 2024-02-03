@@ -1,24 +1,24 @@
-.calendar {
+.calendar-dates {
   @apply bg-white rounded-md p-8;
 }
 
-.calendar .days {
+.calendar-dates .days {
   @apply grid grid-cols-7 justify-items-center border-b;
 }
 
-.calendar .day_num {
+.calendar-dates .day_num {
   @apply pt-3 h-14 w-full border-t border-l text-center;
 }
 
-.calendar .day_num.selected {
+.calendar-dates .day_num.selected {
   @apply bg-button-active text-white;
 }
 
-.calendar .day_num.ignore {
+.calendar-dates .day_num.ignore {
   @apply bg-inactive text-inactive-text;
 }
 
-.calendar .day_num:nth-child(7n) {
+.calendar-dates .day_num:nth-child(7n) {
   @apply border-r;
 }
 
