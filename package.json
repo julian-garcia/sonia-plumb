@@ -4,10 +4,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "start": "npm run monitor-wp & (tsc && vite build -w)",
-    "build": "npx prettier . --write && tsc && vite build && npm run copy-wp && node src/package-theme.js",
-    "monitor-wp": "node src/monitor-wp-files.js",
-    "copy-wp": "node src/copy-wp-files.js"
+    "start": "tsc && vite build -w",
+    "build": "npx prettier . --write && tsc && vite build && node src/package-theme.js"
   },
   "devDependencies": {
     "archiver": "^6.0.1",

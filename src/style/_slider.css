@@ -8,7 +8,7 @@
 }
 
 .swiper.slider .slide-title h1 {
-  @apply text-6xl;
+  @apply text-4xl lg:text-6xl;
 }
 
 .swiper-slides h4 {
@@ -25,7 +25,7 @@
 }
 
 .swiper.slider .image::before {
-  @apply absolute w-full h-[80px] content-[''] -bottom-[80px] left-0 z-30 bg-shaded;
+  @apply absolute w-full h-[80px] content-[''] -bottom-[80px] left-0 z-30 bg-body-back;
 }
 
 .swiper.slider .button {

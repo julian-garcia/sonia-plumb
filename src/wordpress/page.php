@@ -6,10 +6,10 @@
     <h1><?php the_title(); ?></h1>
   </div>
 <?php endif; ?>
-<?php if (!get_post_thumbnail_id()) : ?>
-  <h1 class="my-8"><?php the_title(); ?></h1>
-<?php endif; ?>
 <section class="section">
+  <?php if (!get_post_thumbnail_id()) : ?>
+    <h1 class="my-8"><?php the_title(); ?></h1>
+  <?php endif; ?>
   <?php if (get_field('weekday')) {
     get_template_part('templates/content', 'contact');
   } ?>

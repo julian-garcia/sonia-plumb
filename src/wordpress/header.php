@@ -27,7 +27,8 @@
         'menu' => 'primary',
         'container' => '',
         'theme_location' => 'primary',
-        'menu_class' => "menu menu-navigation"
+        'menu_class' => "menu menu-navigation",
+        'menu_id' => "mainMenu"
       )
     );
     ?>
@@ -41,4 +42,5 @@
       )
     );
     ?>
+    <div class="toggle" id="menuToggle"></div>
     <main class="content">

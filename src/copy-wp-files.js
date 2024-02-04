@@ -1,17 +1,6 @@
-import { readlink, cpSync } from 'node:fs';
-import { addAssetHash } from './asset-hash.js';
-
-copyFiles();
+import { cpSync, readlinkSync } from 'node:fs';
 
 export function copyFiles() {
-  readlink('./dist-local', (err, target) => {
-    if (!err) {
-      try {
-        cpSync('./src/wordpress', target, { recursive: true });
-        addAssetHash();
-      } catch (error) {
-        console.log(error.message);
-      }
-    }
-  });
+  const target = readlinkSync('./dist-local');
+  cpSync('./src/wordpress', target, { recursive: true });
 }

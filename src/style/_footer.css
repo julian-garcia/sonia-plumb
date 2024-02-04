@@ -8,7 +8,7 @@
 }
 
 .menu-footer {
-  @apply hidden sm:block;
+  @apply hidden md:block;
 }
 
 .footer .menu-footer li {

@@ -14,6 +14,13 @@
       'content content content content content'
       'footer footer footer footer footer';
   }
+
+  @screen xl {
+    grid-template-areas:
+      'logo logo navigation contact contact'
+      'content content content content content'
+      'footer footer footer footer footer';
+  }
 }
 
 .content {
@@ -33,7 +40,7 @@
 }
 
 .logo {
-  @apply bg-contain bg-no-repeat bg-left min-h-[50px] relative z-10 mt-4;
+  @apply bg-contain bg-no-repeat bg-left min-h-[50px] relative z-10 mt-4 ml-8;
   background-image: url('../images/logo.svg');
   grid-area: logo;
 }

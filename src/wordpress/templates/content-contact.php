@@ -14,9 +14,9 @@
     <?php echo get_field('weekend')['close']; ?>
   </div>
 </div>
-<div class="grid grid-cols-[max-content_max-content_max-content_max-content] gap-x-6 gap-y-3 w-max mx-auto my-12">
+<div class="grid grid-cols-[max-content_max-content] md:grid-cols-[max-content_max-content_max-content_max-content] gap-x-6 gap-y-3 w-max mx-auto my-12">
   <div class="bg-[url('../images/phone.svg')] w-8 h-8 bg-contain"></div>
-  <p>Phone<br>
+  <p class="m-0">Phone<br>
     <a href="tel:<?php echo get_field('phone') ?>">
       <?php echo get_field('phone') ?>
     </a>

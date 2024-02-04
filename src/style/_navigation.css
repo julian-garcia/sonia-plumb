@@ -4,12 +4,21 @@
 }
 
 .menu-navigation {
-  @apply mt-4 hidden lg:flex;
+  @apply block fixed h-auto top-16 p-6 bg-white text-black -right-full transition-[right] duration-300 rounded-l;
+  @apply lg:top-[unset] lg:h-[unset] lg:mt-4 lg:flex lg:relative lg:p-[unset] lg:bg-[unset] lg:text-white lg:right-[unset];
+}
+
+.menu-navigation.show {
+  @apply -right-1;
 }
 
 .menu-navigation > .current-menu-item,
 .current-menu-parent {
   @apply border-b-2 border-b-button-active;
+}
+
+.menu-navigation li {
+  @apply mb-3 lg:mb-0;
 }
 
 .no-feature .menu,
@@ -52,7 +61,7 @@
 }
 
 .menu-contact {
-  @apply w-full justify-end pr-8 lg:pr-12;
+  @apply hidden sm:flex w-full justify-end pr-20 lg:pr-8;
 }
 
 .menu-contact li:last-of-type a {
@@ -61,4 +70,12 @@
 
 .menu-contact li:first-of-type a {
   @apply last-of-type:button-light;
+}
+
+.toggle {
+  @apply block lg:hidden w-12 h-12 bg-white fixed right-6 top-8 z-20 rounded-full;
+}
+
+.toggle::before {
+  @apply content-[''] w-8 h-8 bg-[url('../images/bars.svg')] bg-contain bg-no-repeat bg-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2;
 }
