@@ -4,7 +4,7 @@
 }
 
 .menu-navigation {
-  @apply block fixed h-auto top-16 p-6 bg-white text-black -right-full transition-[right] duration-300 rounded-l;
+  @apply block fixed h-auto top-14 p-6 bg-white text-black -right-full transition-[right] duration-300 rounded-l z-30;
   @apply lg:top-[unset] lg:h-[unset] lg:mt-4 lg:flex lg:relative lg:p-[unset] lg:bg-[unset] lg:text-white lg:right-[unset];
 }
 
@@ -61,15 +61,22 @@
 }
 
 .menu-contact {
-  @apply hidden sm:flex w-full justify-end pr-20 lg:pr-8;
+  @apply block fixed bottom-3 -right-1 rounded-l-[4px] overflow-hidden sm:overflow-visible;
+  @apply sm:flex sm:w-full sm:justify-end sm:pr-20 lg:pr-8 sm:relative sm:top-0;
 }
 
 .menu-contact li:last-of-type a {
   @apply last-of-type:button;
 }
+.menu.menu-contact li.menu-item:last-of-type a {
+  @apply rounded-none sm:rounded mb-0 p-2 sm:px-4 sm:py-3 xl:px-8 xl:py-5;
+}
 
 .menu-contact li:first-of-type a {
   @apply last-of-type:button-light;
+}
+.menu.menu-contact li.menu-item:first-of-type a {
+  @apply rounded-none sm:rounded mb-0 p-2 sm:px-4 sm:py-3 xl:px-8 xl:py-5;
 }
 
 .toggle {

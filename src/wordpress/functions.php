@@ -194,15 +194,21 @@ function timeline_post_type()
   );
 }
 
-function section_shortcode($_, $content = null)
+function section_shortcode($_atts, $content = null)
 {
+  $defaults = array(
+    'class_name' => '',
+  );
+  $atts = shortcode_atts($defaults, $_atts);
   $args = array(
-    'content' => $content
+    'content' => $content,
+    'class_name' => $atts['class_name']
   );
   ob_start();
   get_template_part('templates/content', 'section', $args);
   return ob_get_clean();
 }
+
 
 function works_shortcode()
 {

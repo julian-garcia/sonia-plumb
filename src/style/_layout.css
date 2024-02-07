@@ -40,7 +40,7 @@
 }
 
 .logo {
-  @apply bg-contain bg-no-repeat bg-left min-h-[50px] relative z-10 mt-4 ml-8;
+  @apply bg-contain bg-no-repeat bg-left min-h-[50px] relative z-10 mt-4 ml-0 lg:ml-8;
   background-image: url('../images/logo.svg');
   grid-area: logo;
 }

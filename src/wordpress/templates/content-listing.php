@@ -41,7 +41,7 @@ $pageTotal = $postCount ? ceil($postCount / $postsPerPage) : 0;
     <?php endforeach; ?>
   </form>
   <?php if ($pageTotal > 1) : ?>
-    <ul class="pagination flex gap-4 justify-end text-button-outline">
+    <ul class="pagination flex gap-4 my-8 justify-end text-button-outline">
       <?php for ($i = 1; $i <= $pageTotal; $i++) : ?>
         <?php if ($i == 1) : ?>
           <?php if ($currentPageNumber == 1) : ?>
@@ -83,21 +83,39 @@ $pageTotal = $postCount ? ceil($postCount / $postsPerPage) : 0;
       'post_type' => $args['post_type'],
       'posts_per_page' => $postsPerPage,
       'category_name' => $selected,
-      'paged' => $page
+      'paged' => $page,
+      'orderby' => 'title',
+      'order' => 'ASC'
     )
   );
   if ($the_query->have_posts()) : ?>
     <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
-      <div class="grid md:grid-cols-2 gap-4 border-y-2 border-button-outline my-8">
-        <div class="my-10">
-          <h4><?php the_title(); ?></h4>
-          <?php the_excerpt(); ?>
-          <a href="<?php the_permalink(); ?>" class="button-outline !text-black">
-            <?php echo $args['read_more']; ?>
-          </a>
+      <?php if ($args['post_type'] == 'team') : ?>
+        <div class="team-card">
+          <div class="my-10 px-8">
+            <h4><?php the_title(); ?></h4>
+            <?php if (get_field("position")) : ?>
+              <p class="text-[#949494]"><?php echo get_field("position"); ?></p>
+            <?php endif; ?>
+            <?php the_excerpt(); ?>
+            <a href="<?php the_permalink(); ?>" class="button-outline !text-black">
+              <?php echo $args['read_more']; ?>
+            </a>
+          </div>
+          <div class="bg-cover bg-center min-h-[400px] -my-0.5" style="background-image: url('<?php the_post_thumbnail_url() ?>')"></div>
         </div>
-        <div class="bg-cover bg-center min-h-[400px] -my-0.5" style="background-image: url('<?php the_post_thumbnail_url() ?>')"></div>
-      </div>
+      <?php else : ?>
+        <div class="grid md:grid-cols-2 gap-4 border-y-2 border-button-outline my-8">
+          <div class="my-10">
+            <h4><?php the_title(); ?></h4>
+            <?php the_excerpt(); ?>
+            <a href="<?php the_permalink(); ?>" class="button-outline !text-black">
+              <?php echo $args['read_more']; ?>
+            </a>
+          </div>
+          <div class="bg-cover bg-center min-h-[400px] -my-0.5" style="background-image: url('<?php the_post_thumbnail_url() ?>')"></div>
+        </div>
+      <?php endif; ?>
       <?php wp_reset_postdata(); ?>
     <?php endwhile; ?>
   <?php endif; ?>

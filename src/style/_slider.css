@@ -3,7 +3,7 @@
 }
 
 .swiper.slider .slide-title {
-  @apply absolute bottom-12 m-0 block mx-8 lg:mx-12 max-w-[75vw]
+  @apply absolute bottom-12 m-0 block mx-4 lg:mx-12 max-w-[75vw]
     w-[calc(100%-4rem)] lg:w-[calc(100%-8rem)] z-20;
 }
 

@@ -1,11 +1,10 @@
 .modal {
-  @apply fixed left-0 top-0 w-full h-full bg-black/80 z-10 scale-0
-  duration-200 transition-[transform,opacity] opacity-0;
+  @apply fixed left-0 top-0 w-full h-full bg-black/80 z-20 scale-0
+  duration-200 transition-[transform,opacity] opacity-0 overflow-scroll;
 }
 
 .modal-image {
-  @apply fixed bg-cover bg-no-repeat w-[900px] h-[600px] max-w-full max-h-full
-  bg-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer;
+  @apply fixed bg-cover bg-no-repeat bg-center w-[900px] h-[600px] top-1/2 left-0 md:left-1/2 translate-x-0 md:-translate-x-1/2 -translate-y-1/2 cursor-pointer;
 }
 
 .modal.show {
