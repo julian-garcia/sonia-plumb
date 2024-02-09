@@ -194,6 +194,30 @@ function timeline_post_type()
   );
 }
 
+function partnership_post_type()
+{
+  register_post_type(
+    'partnership',
+    array(
+      'rewrite' => array('slug' => 'partnership'),
+      'labels' => array(
+        'name' => 'Partnership',
+        'singular_name' => 'Partnership',
+        'add_new' => 'Add New Partnership',
+        'add_new_item' => 'Add New Partnership',
+        'edit_item' => 'Edit Partnership'
+      ),
+      'menu_icon' => 'dashicons-networking',
+      'public' => true,
+      'has_archive' => false,
+      'show_in_rest' => true,
+      'supports' => array(
+        'title', 'editor'
+      )
+    )
+  );
+}
+
 function section_shortcode($_atts, $content = null)
 {
   $defaults = array(
@@ -231,6 +255,23 @@ function timeline_shortcode()
   return ob_get_clean();
 }
 
+function partnerships_shortcode()
+{
+  ob_start();
+  get_template_part(
+    'templates/content',
+    'listing',
+    array(
+      'post_type' => 'partnership',
+      'form_url' => '/partnerships',
+      'default_category' => '',
+      'categories'  => [],
+      'posts_page' => 5
+    )
+  );
+  return ob_get_clean();
+}
+
 function shortcode_empty_paragraph_fix($content)
 {
   $array = array(
@@ -251,9 +292,11 @@ add_action('init', 'event_post_type');
 add_action('init', 'testimonial_post_type');
 add_action('init', 'timeline_post_type');
 add_action('init', 'class_post_type');
+add_action('init', 'partnership_post_type');
 add_shortcode('section', 'section_shortcode');
 add_shortcode('works', 'works_shortcode');
 add_shortcode('social', 'social_shortcode');
 add_shortcode('timeline', 'timeline_shortcode');
+add_shortcode('partnerships', 'partnerships_shortcode');
 add_theme_support('post-thumbnails');
 add_filter('the_content', 'shortcode_empty_paragraph_fix');

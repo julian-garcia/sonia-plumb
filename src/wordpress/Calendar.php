@@ -1,7 +1,7 @@
 <?php
 class Calendar
 {
-  private $active_year, $active_month, $active_day;
+  private $active_year, $active_month, $active_day, $today;
   private $events = [];
 
   public function __construct($date = null)
@@ -9,6 +9,7 @@ class Calendar
     $this->active_year = $date != null ? date('Y', strtotime($date)) : date('Y');
     $this->active_month = $date != null ? date('m', strtotime($date)) : date('m');
     $this->active_day = $date != null ? date('d', strtotime($date)) : date('d');
+    $this->today = strtotime('now');
   }
 
   public function add_event($id, $date, $days = 1)
@@ -50,6 +51,7 @@ class Calendar
       if ($i == $this->active_day) {
         $selected = ' selected';
       }
+      $isToday = date('y-m-d', $this->today) == date('y-m-d', strtotime($this->active_year . '-' . $this->active_month . '-' . $i)) ? ' today' : '';
       $post_ids = [];
       foreach ($this->events as $event) {
         for ($d = 0; $d <= ($event[2] - 1); $d++) {
@@ -59,7 +61,7 @@ class Calendar
         }
       }
       $event_ids = implode(',', $post_ids);
-      $html .= '<div class="day_num' . $selected . '" data-event-ids="' . $event_ids . '">';
+      $html .= '<div class="day_num' . $selected . $isToday . '" data-event-ids="' . $event_ids . '">';
       $html .= '<span data-event-ids="' . $event_ids . '">' . $i . '</span>';
       if ($post_ids) {
         $html .= '<div class="has-events" data-event-ids="' . $event_ids . '"></div>';

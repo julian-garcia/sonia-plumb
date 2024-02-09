@@ -41,19 +41,27 @@
   @apply relative;
 }
 
+.today {
+  @apply bg-button-active text-white;
+}
+
 .has-events::before {
   @apply content-[''] absolute w-2 h-2 -bottom-3 left-1/2 -translate-x-1/2
     rounded-full bg-button-active;
 }
 
-[data-event-ids]:not([data-event-ids='']) {
+.today .has-events::before {
+  @apply bg-white;
+}
+
+[data-event-ids] {
   @apply cursor-pointer;
 }
 
 .selected .has-events::before {
   @apply bg-white;
 }
-
+/*
 .event-description {
   @apply hidden;
-}
+} */

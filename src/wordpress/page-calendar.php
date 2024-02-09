@@ -59,9 +59,10 @@ $the_query = new WP_Query(
       <?php echo $calendar; ?>
     </div>
     <div>
+      <h3 id="noEvents" class="hidden">There are no events on this date.</h3>
       <?php if ($the_query->have_posts()) :
         while ($the_query->have_posts()) : $the_query->the_post(); ?>
-          <div id="event<?php the_ID(); ?>" class="hidden mb-10">
+          <div id="event<?php the_ID(); ?>" class="hidden mb-10 event-description">
             <h3><?php the_title(); ?></h3>
             <h4 class="text-button-active -mt-4">
               <?php $categories = get_the_category();
@@ -91,9 +92,11 @@ $the_query = new WP_Query(
               </a>
             <?php endif; ?>
           </div>
-      <?php wp_reset_postdata();
-        endwhile;
-      endif; ?>
+        <?php wp_reset_postdata();
+        endwhile; ?>
+      <?php else : ?>
+        <h3 id="noEventsMonth">There are no events this month.</h3>
+      <?php endif; ?>
     </div>
   </div>
 </section>

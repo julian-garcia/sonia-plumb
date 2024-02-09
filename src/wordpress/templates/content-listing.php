@@ -11,35 +11,46 @@ if (isset($_GET['category'])) {
   $selected = $args['default_category'];
   $page = '1';
 }
-$postsPerPage = 3;
 $currentPageNumber = (int)$page;
+$postsPerPage = 3;
 $postCount = null;
-$cats = get_terms('category');
-foreach ($cats as $cat) {
-  if ($cat->slug == $selected) {
-    $postCount = $cat->count;
+
+if ($args['post_type'] == 'partnership') {
+  $postsPerPage = $args['posts_page'];
+  $count_posts = wp_count_posts('partnership');
+  if ($count_posts) {
+    $postCount = $count_posts->publish;
+  }
+} else {
+  $cats = get_terms('category');
+  foreach ($cats as $cat) {
+    if ($cat->slug == $selected) {
+      $postCount = $cat->count;
+    }
   }
 }
 $pageTotal = $postCount ? ceil($postCount / $postsPerPage) : 0;
 ?>
-<section class="section">
-  <form class="categories" method="GET" action="<?php echo $args['form_url'] ?>?category=<?php echo $selected ?>" id="stageForm">
-    <?php
-    $categories = get_categories(
-      array(
-        'orderby' => 'name',
-        'order'   => 'ASC',
-        'hide_empty' => false,
-        'slug' => $args['categories']
-      )
-    );
-    foreach ($categories as $category) : ?>
-      <input type="radio" name="category" value="<?php echo $category->slug; ?>" id="<?php echo $category->slug ?>">
-      <label for="<?php echo $category->slug ?>" class="<?php echo $selected === $category->slug ? 'selected' : ''; ?>">
-        <?php echo $category->name ?>
-      </label>
-    <?php endforeach; ?>
-  </form>
+<section class="section" id="postListing">
+  <?php if ($args['post_type'] !== 'partnership') : ?>
+    <form class="categories" method="GET" action="<?php echo $args['form_url'] ?>?category=<?php echo $selected ?>" id="stageForm">
+      <?php
+      $categories = get_categories(
+        array(
+          'orderby' => 'name',
+          'order'   => 'ASC',
+          'hide_empty' => false,
+          'slug' => $args['categories']
+        )
+      );
+      foreach ($categories as $category) : ?>
+        <input type="radio" name="category" value="<?php echo $category->slug; ?>" id="<?php echo $category->slug ?>">
+        <label for="<?php echo $category->slug ?>" class="<?php echo $selected === $category->slug ? 'selected' : ''; ?>">
+          <?php echo $category->name ?>
+        </label>
+      <?php endforeach; ?>
+    </form>
+  <?php endif; ?>
   <?php if ($pageTotal > 1) : ?>
     <ul class="pagination flex gap-4 my-8 justify-end text-button-outline">
       <?php for ($i = 1; $i <= $pageTotal; $i++) : ?>
@@ -103,6 +114,13 @@ $pageTotal = $postCount ? ceil($postCount / $postsPerPage) : 0;
             </a>
           </div>
           <div class="bg-cover bg-center min-h-[400px] -my-0.5" style="background-image: url('<?php the_post_thumbnail_url() ?>')"></div>
+        </div>
+      <?php elseif ($args['post_type'] == 'partnership') : ?>
+        <div class="grid md:grid-cols-2">
+          <h4 class="mb-4">
+            <a href="<?php echo get_field('partner_link'); ?>" target="_blank" rel="noopener noreferrer"><?php the_title(); ?></a>
+          </h4>
+          <div><?php the_content(); ?></div>
         </div>
       <?php else : ?>
         <div class="grid md:grid-cols-2 gap-4 border-y-2 border-button-outline my-8">
