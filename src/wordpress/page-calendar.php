@@ -59,10 +59,49 @@ $the_query = new WP_Query(
       <?php echo $calendar; ?>
     </div>
     <div>
+      <?php if ($the_query->have_posts()) : ?>
+        <div class="custom-select">
+          <button class="select-button" role="combobox" aria-label="select button" aria-haspopup="listbox" aria-expanded="false" aria-controls="selectDropdown" id="selectButton">
+            <span class="selected-value" id="selectedValue">Filter</span>
+            <span class="select-arrow" id="selectArrow"></span>
+          </button>
+          <ul class="select-dropdown" role="listbox" id="selectDropdown">
+            <?php
+            $terms = [];
+            if ($the_query->have_posts()) {
+              while ($the_query->have_posts()) {
+                $the_query->the_post();
+                $get_terms = get_the_terms(get_the_ID(), 'category');
+                if ($get_terms) {
+                  foreach ($get_terms as $term) {
+                    $terms[] = array('name' => $term->name, 'id' => $term->term_id);
+                  }
+                }
+                wp_reset_postdata();
+              }
+            } ?>
+            <li class="select-option" role="option">
+              <input type="radio" id="All events" name="event-category" value="all" />
+              <label for="All events">All events</label>
+            </li>
+            <?php if ($terms) : ?>
+              <?php foreach (array_unique($terms, SORT_REGULAR) as $term) : ?>
+                <li class="select-option" role="option">
+                  <input type="radio" id="<?php echo $term['name']; ?>" name="event-category" value="<?php echo $term['id']; ?>" />
+                  <label for="<?php echo $term['name']; ?>">
+                    <?php echo $term['name']; ?>
+                  </label>
+                </li>
+              <?php endforeach; ?>
+            <?php endif; ?>
+          </ul>
+        </div>
+      <?php endif; ?>
       <h3 id="noEvents" class="hidden">There are no events on this date.</h3>
       <?php if ($the_query->have_posts()) :
         while ($the_query->have_posts()) : $the_query->the_post(); ?>
-          <div id="event<?php the_ID(); ?>" class="hidden mb-10 event-description">
+
+          <div id="event<?php the_ID(); ?>" data-event-category="<?php has_category() ? the_category_ID() : ''; ?>" class="hidden mb-10 event-description">
             <h3><?php the_title(); ?></h3>
             <h4 class="text-button-active -mt-4">
               <?php $categories = get_the_category();
@@ -86,9 +125,9 @@ $the_query = new WP_Query(
                 <?php echo get_field('time_2'); ?>
               </span>
             </div>
-            <?php if (get_field('event_link')) : ?>
+            <?php if (get_field('event_link')['url']) : ?>
               <a href="<?php echo get_field('event_link')['url']; ?>" class="button">
-                <?php echo get_field('event_link')['text']; ?>
+                <?php echo get_field('event_link')['text'] ? get_field('event_link')['text'] : 'RSVP'; ?>
               </a>
             <?php endif; ?>
           </div>

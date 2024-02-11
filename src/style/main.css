@@ -14,6 +14,8 @@
 @import './_cards.css';
 @import './_form.css';
 @import './_accordion.css';
+@import './_select.css';
+@import './_polygon.css';
 @import '/node_modules/swiper/swiper-bundle.css';
 
 @tailwind base;

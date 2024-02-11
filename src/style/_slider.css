@@ -32,6 +32,23 @@
   @apply mb-10;
 }
 
+.swiper .swiper-button-prev::after,
+.swiper .swiper-button-next::after,
+.timeline-nav-back::after,
+.timeline-nav-next::after {
+  @apply absolute font-sans content-[''] w-6 h-6 bg-no-repeat bg-contain bg-center block left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2;
+}
+
+.swiper .swiper-button-prev::after,
+.timeline-nav-back::after {
+  @apply bg-[url('../images/back.svg')];
+}
+
+.swiper .swiper-button-next::after,
+.timeline-nav-next::after {
+  @apply bg-[url('../images/next.svg')];
+}
+
 .slider .swiper-button-prev,
 .slider .swiper-button-next {
   @apply text-black absolute bottom-2.5 mb-0 top-[unset]
@@ -56,11 +73,11 @@
 }
 
 .slider .swiper-button-next {
-  @apply right-4 md:right-12 after:content-['next'];
+  @apply right-4 md:right-12;
 }
 
 .slider .swiper-button-prev {
-  @apply right-20 md:right-32 left-[unset] after:content-['prev'];
+  @apply right-20 md:right-32 left-[unset];
 }
 
 .swiper.swiper-works {
@@ -125,39 +142,11 @@
 }
 .testimonials .swiper-button-prev::before,
 .testimonials .swiper-button-next::before {
-  @apply bg-button-outline;
+  @apply bg-shaded;
 }
 
 .testimonials .author {
   @apply text-button-active text-right font-medium;
-}
-
-#hoverImage {
-  @apply h-52 w-52 absolute bg-[length:100vw_auto] cursor-pointer
-  bg-[image:none] -left-full -top-full opacity-90;
-  clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
-  animation-name: dancingSquares;
-  animation-duration: 4s;
-  animation-direction: alternate-reverse;
-  animation-iteration-count: infinite;
-}
-
-@keyframes dancingSquares {
-  25% {
-    clip-path: polygon(20% 0%, 100% 40%, 70% 100%, 10% 100%);
-  }
-  50% {
-    clip-path: polygon(0% 45%, 100% 20%, 50% 75%, 0% 100%);
-  }
-
-  75% {
-    clip-path: polygon(100% 38%, 100% 38%, 66% 100%, 0% 53%);
-  }
-}
-
-#hoverImage::after {
-  @apply absolute w-full h-full left-0 top-0
-  content-[''] bg-black/30;
 }
 
 .timeline {
@@ -165,7 +154,7 @@
 }
 
 .timeline-nav {
-  @apply w-8 h-8 inline-block text-center bg-button-outline rounded-full text-2xl leading-snug select-none cursor-pointer;
+  @apply w-10 h-10 inline-block text-center bg-shaded rounded-full text-2xl leading-snug select-none cursor-pointer relative;
 }
 
 .timeline-point {

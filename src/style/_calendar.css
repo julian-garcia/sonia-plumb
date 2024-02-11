@@ -14,6 +14,10 @@
   @apply bg-button-active text-white;
 }
 
+.calendar-dates .days .day_num.today {
+  @apply shadow-[inset_0px_0px_0px_4px] shadow-button-active;
+}
+
 .calendar-dates .day_num.ignore {
   @apply bg-inactive text-inactive-text;
 }
@@ -23,14 +27,23 @@
 }
 
 .calendar-nav {
-  @apply absolute right-8 top-10 z-10 flex gap-4;
+  @apply absolute right-12 top-10 z-10 flex gap-8;
+}
+
+.calendar-nav a {
+  @apply relative;
+}
+
+.calendar-nav a::before {
+  @apply content-[''] absolute w-6 h-6 block bg-no-repeat bg-contain -top-2;
 }
 
 .calendar-nav a:first-child:before {
-  @apply content-[url('../images/back.svg')];
+  @apply bg-[url('../images/back.svg')];
 }
+
 .calendar-nav a:nth-child(2):before {
-  @apply content-[url('../images/next.svg')];
+  @apply bg-[url('../images/next.svg')];
 }
 
 .day_name {
@@ -39,10 +52,6 @@
 
 .has-events {
   @apply relative;
-}
-
-.today {
-  @apply bg-button-active text-white;
 }
 
 .has-events::before {
@@ -61,7 +70,3 @@
 .selected .has-events::before {
   @apply bg-white;
 }
-/*
-.event-description {
-  @apply hidden;
-} */

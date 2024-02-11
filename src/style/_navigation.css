@@ -4,16 +4,22 @@
 }
 
 .menu-navigation {
-  @apply block fixed h-auto top-14 p-6 bg-white text-black -right-full transition-[right] duration-300 rounded-l z-30;
-  @apply lg:top-[unset] lg:h-[unset] lg:mt-4 lg:flex lg:relative lg:p-[unset] lg:bg-[unset] lg:text-white lg:right-[unset];
+  @apply block fixed h-auto max-h-[calc(100vh-5rem)] top-14 p-6 bg-white text-black -right-full transition-[right] duration-300 rounded-l z-30 overflow-y-scroll;
+}
+
+@screen lg {
+  .menu-navigation {
+    @apply top-[unset] h-[unset] mt-8 flex relative p-[unset]
+      bg-[unset] text-white right-[unset] overflow-visible;
+  }
 }
 
 .menu-navigation.show {
   @apply -right-1;
 }
 
-.menu-navigation > .current-menu-item,
-.current-menu-parent {
+.menu-navigation > .current-menu-item > a,
+.current-menu-parent > a {
   @apply border-b-2 border-b-button-active;
 }
 
@@ -28,8 +34,14 @@
 }
 
 .menu .sub-menu {
-  @apply overflow-hidden transition-[opacity,padding,visibility] duration-500
-    p-0 absolute opacity-0 delay-300 invisible text-black;
+  @apply mt-4 ml-4 mb-4;
+}
+
+@screen lg {
+  .menu .sub-menu {
+    @apply overflow-hidden transition-[opacity,padding,visibility] duration-500
+      p-0 absolute opacity-0 delay-300 invisible text-black mt-0 ml-[unset] z-30;
+  }
 }
 
 .menu .sub-menu .menu-item {

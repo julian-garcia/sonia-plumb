@@ -15,7 +15,7 @@ export default {
         'button-hover': '#696DB8',
         'button-outline': '#C8C7C7',
         shaded: '#E7E7E7',
-        'body-back': '#F1F1F1',
+        'body-back': '#F5F5F5',
         inactive: '#F2F3F7',
         'inactive-text': '#D5D4DF',
       },

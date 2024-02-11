@@ -51,7 +51,8 @@ class Calendar
       if ($i == $this->active_day) {
         $selected = ' selected';
       }
-      $isToday = date('y-m-d', $this->today) == date('y-m-d', strtotime($this->active_year . '-' . $this->active_month . '-' . $i)) ? ' today' : '';
+      $calDate = date('y-m-d', strtotime($this->active_year . '-' . $this->active_month . '-' . $i));
+      $isToday = date('y-m-d', $this->today) == $calDate ? ' today' : '';
       $post_ids = [];
       foreach ($this->events as $event) {
         for ($d = 0; $d <= ($event[2] - 1); $d++) {

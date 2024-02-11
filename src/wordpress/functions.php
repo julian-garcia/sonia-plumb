@@ -4,6 +4,7 @@ function theme_scripts()
 {
   $version = wp_get_theme()->get('Version');
   wp_enqueue_style('sonia-plumb', get_template_directory_uri() . '/assets/{index.css}', '', $version);
+  wp_enqueue_script('polyfill', 'https://polyfill.io/v3/polyfill.min.js', '', $version, true);
   wp_enqueue_script('sonia-plumb', get_template_directory_uri() . '/assets/{index.js}', '', $version, true);
 }
 
