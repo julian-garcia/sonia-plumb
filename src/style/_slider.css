@@ -193,3 +193,28 @@
 .timeline-event:nth-child(even) .timeline-text {
   @apply order-3 self-start;
 }
+
+.swiper.events {
+  @apply w-[600px] mx-0 max-w-full pt-8;
+}
+
+.swiper.events .swiper-pagination {
+  @apply top-0 bottom-auto text-right;
+}
+
+.swiper.events .swiper-pagination .swiper-pagination-bullet {
+  @apply bg-transparent pl-0 pr-0 mr-0 border-none w-[unset] h-[unset]
+    relative font-medium text-gray-400 opacity-100;
+}
+
+.swiper.events .swiper-pagination .swiper-pagination-bullet-active {
+  @apply text-button-active;
+}
+
+.swiper.events .swiper-pagination .dlm {
+  @apply text-gray-400 mx-2;
+}
+
+.swiper.events .swiper-pagination .swiper-pagination-bullet:last-of-type .dlm {
+  @apply hidden;
+}

@@ -100,8 +100,7 @@ $the_query = new WP_Query(
       <h3 id="noEvents" class="hidden">There are no events on this date.</h3>
       <?php if ($the_query->have_posts()) :
         while ($the_query->have_posts()) : $the_query->the_post(); ?>
-
-          <div id="event<?php the_ID(); ?>" data-event-category="<?php has_category() ? the_category_ID() : ''; ?>" class="hidden mb-10 event-description">
+          <div id="event<?php the_ID(); ?>" data-event-category="<?php echo get_the_category() ? get_the_category()[0]->term_id : ''; ?>" class="hidden mb-10 event-description">
             <h3><?php the_title(); ?></h3>
             <h4 class="text-button-active -mt-4">
               <?php $categories = get_the_category();

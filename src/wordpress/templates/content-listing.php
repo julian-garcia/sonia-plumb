@@ -17,7 +17,7 @@ $postCount = null;
 
 if ($args['post_type'] == 'partnership') {
   $postsPerPage = $args['posts_page'];
-  $count_posts = wp_count_posts('partnership');
+  $count_posts = wp_count_posts($args['post_type']);
   if ($count_posts) {
     $postCount = $count_posts->publish;
   }

@@ -6,6 +6,10 @@
   @apply mx-auto w-max text-center border-b-4 border-button-active pb-4;
 }
 
+.career h1 {
+  @apply text-center;
+}
+
 .content h2 {
   @apply text-2xl md:text-3xl font-medium;
 }

@@ -273,6 +273,23 @@ function partnerships_shortcode()
   return ob_get_clean();
 }
 
+function events_shortcode($_atts)
+{
+  $defaults = array(
+    'future' => '',
+  );
+  $atts = shortcode_atts($defaults, $_atts);
+  ob_start();
+  get_template_part(
+    'templates/content',
+    'events',
+    array(
+      'future' => $atts['future']
+    )
+  );
+  return ob_get_clean();
+}
+
 function shortcode_empty_paragraph_fix($content)
 {
   $array = array(
@@ -299,5 +316,6 @@ add_shortcode('works', 'works_shortcode');
 add_shortcode('social', 'social_shortcode');
 add_shortcode('timeline', 'timeline_shortcode');
 add_shortcode('partnerships', 'partnerships_shortcode');
+add_shortcode('events', 'events_shortcode');
 add_theme_support('post-thumbnails');
 add_filter('the_content', 'shortcode_empty_paragraph_fix');

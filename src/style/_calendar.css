@@ -59,10 +59,6 @@
     rounded-full bg-button-active;
 }
 
-.today .has-events::before {
-  @apply bg-white;
-}
-
 [data-event-ids] {
   @apply cursor-pointer;
 }

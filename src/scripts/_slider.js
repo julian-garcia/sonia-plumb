@@ -58,6 +58,48 @@ export const swiperTestimonials = new Swiper('.swiper.testimonials', {
   },
 });
 
+export const swiperEventsFuture = new Swiper('.swiper.events.future', {
+  modules: [Pagination, EffectFade],
+  loop: true,
+  spaceBetween: 5,
+  speed: 1200,
+  effect: 'fade',
+  fadeEffect: {
+    crossFade: true,
+  },
+  centeredSlides: true,
+  slidesPerView: 1,
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+    renderBullet: function (index) {
+      return `<span class="swiper-pagination-bullet">${index}
+      <span class="dlm">/</span></span>`;
+    },
+  },
+});
+
+export const swiperEventsPast = new Swiper('.swiper.events.past', {
+  modules: [Pagination, EffectFade],
+  loop: true,
+  spaceBetween: 5,
+  speed: 1200,
+  effect: 'fade',
+  fadeEffect: {
+    crossFade: true,
+  },
+  centeredSlides: true,
+  slidesPerView: 1,
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+    renderBullet: function (index) {
+      return `<span class="swiper-pagination-bullet">${index}
+      <span class="dlm">/</span></span>`;
+    },
+  },
+});
+
 export const swiperGallery = new Swiper('.swiper-gallery', {
   modules: [Navigation, Autoplay, Scrollbar],
   loop: true,
