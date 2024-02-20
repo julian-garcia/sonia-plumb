@@ -10,12 +10,13 @@
   @apply pt-3 h-14 w-full border-t border-l text-center;
 }
 
-.calendar-dates .day_num.selected {
+.calendar-dates .day_num.selected,
+.calendar-dates .days .day_num.selected.today {
   @apply bg-button-active text-white;
 }
 
 .calendar-dates .days .day_num.today {
-  @apply shadow-[inset_0px_0px_0px_4px] shadow-button-active;
+  @apply bg-shaded;
 }
 
 .calendar-dates .day_num.ignore {

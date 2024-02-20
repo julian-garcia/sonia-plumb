@@ -1,3 +1,7 @@
 .section {
   @apply max-w-full mx-auto lg:max-w-[1040px] my-8;
 }
+
+.class .section > * {
+  @apply max-w-[700px];
+}

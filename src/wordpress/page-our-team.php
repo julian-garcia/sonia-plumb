@@ -5,10 +5,10 @@ get_template_part(
   'listing',
   array(
     'post_type' => 'team',
-    'categories'  => ['dancer', 'artistic-team'],
-    'default_category' => 'dancer',
+    'categories'  => ['staff', 'dancer', 'artistic-team', 'board'],
+    'default_category' => 'staff',
     'form_url' => '/our-team',
-    'read_more' => 'Read full bio'
+    'read_more' => ['Read full bio', 'Read full bio', 'Read full bio', 'Read full bio']
   )
 ); ?>
 <section class="section text-center">

@@ -28,8 +28,7 @@
 }
 
 .no-feature .menu,
-.team .menu,
-.class .menu {
+.team .menu {
   @apply text-black;
 }
 
@@ -81,14 +80,14 @@
   @apply last-of-type:button;
 }
 .menu.menu-contact li.menu-item:last-of-type a {
-  @apply rounded-none sm:rounded mb-0 p-2 sm:px-4 sm:py-3 xl:px-8 xl:py-5;
+  @apply rounded-none sm:rounded mb-0 p-2 sm:px-4 sm:py-3 xl:px-8 xl:py-5 min-w-[unset];
 }
 
 .menu-contact li:first-of-type a {
   @apply last-of-type:button-light;
 }
 .menu.menu-contact li.menu-item:first-of-type a {
-  @apply rounded-none sm:rounded mb-0 p-2 sm:px-4 sm:py-3 xl:px-8 xl:py-5;
+  @apply rounded-none sm:rounded mb-0 p-2 sm:px-4 sm:py-3 xl:px-8 xl:py-5 min-w-[unset];
 }
 
 .toggle {

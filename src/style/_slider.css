@@ -150,7 +150,7 @@
 }
 
 .timeline {
-  @apply grid gap-8 w-full xl:w-[calc(100vw-300px)] max-w-full md:max-w-[unset] overflow-x-scroll grid-flow-col relative;
+  @apply grid gap-8 w-full xl:w-[calc(100vw-300px)] max-w-full md:max-w-[unset] overflow-x-scroll grid-flow-col relative scroll-smooth;
 }
 
 .timeline-nav {

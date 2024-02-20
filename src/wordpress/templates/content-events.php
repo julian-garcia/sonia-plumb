@@ -25,6 +25,7 @@ if ($the_query->have_posts()) : ?>
       <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
         <div class="swiper-slide">
           <a href="<?php echo get_the_permalink(get_field('stage')->ID); ?>" class="font-medium text-2xl block mb-4"><?php the_title(); ?></a>
+          <p class="font-medium"><?php echo get_field('event_date'); ?></p>
           <p><?php echo get_the_excerpt(); ?></p>
         </div>
       <?php endwhile; ?>

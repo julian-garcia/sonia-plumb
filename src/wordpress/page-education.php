@@ -5,9 +5,9 @@ get_template_part(
   array(
     'post_type' => 'class',
     'categories'  => ['class', 'workshop', 'classroom'],
-    'default_category' => 'classroom',
+    'default_category' => 'class',
     'form_url' => '/education',
-    'read_more' => 'Bring us to your classroom'
+    'read_more' => ['Learn more', 'Learn more', 'Bring us to your classroom']
   )
 ); ?>
 <?php the_content(); ?>

@@ -17,7 +17,7 @@ if ($the_query->have_posts()) : ?>
             <h1><?php the_title(); ?></h1>
           </div>
           <?php if (get_field("slide_link")) : ?>
-            <a href="<?php the_field("slide_link"); ?>" class="absolute w-full h-[calc(100%-8rem)] top-32 left-0 z-30"></a>
+            <a href="<?php echo get_field("slide_link"); ?>" class="absolute w-full h-[calc(100%-8rem)] top-32 left-0 z-30"></a>
           <?php endif; ?>
         </div>
       <?php endwhile; ?>

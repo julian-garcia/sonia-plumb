@@ -5,11 +5,11 @@
 </div>
 <section class="section">
   <div class="mb-10 text-[#949494]">
-    <?php echo get_post_type_object(get_post_type())->labels->name; ?> /
+    <a href="/our-stage" class="!text-[#949494]">Stage</a> /
     <?php $post_categories = get_the_category();
     if ($post_categories) {
       foreach ($post_categories as $category) {
-        echo $category->name;
+        echo '<a class="!text-[#949494]" href="/our-stage?category=' . $category->slug . '">' . $category->name . '</a>';
       }
     } ?> /
     <?php the_title(); ?>
@@ -75,7 +75,7 @@
       <?php if (get_field('music')) : ?>
         <div>
           <h3>Music</h3>
-          <?php the_field('music'); ?>
+          <?php echo get_field('music'); ?>
         </div>
       <?php endif; ?>
     </div>
@@ -85,7 +85,7 @@
 <?php if (get_field('sponsors')) : ?>
   <section class="section mt-12">
     <h3>Sponsors</h3>
-    <?php the_field('sponsors'); ?>
+    <?php echo get_field('sponsors'); ?>
   </section>
 <?php endif; ?>
 
@@ -98,7 +98,7 @@
 <?php if (get_field('external_links')) : ?>
   <section class="section">
     <hr>
-    <?php the_field('external_links'); ?>
+    <?php echo get_field('external_links'); ?>
   </section>
 <?php endif; ?>
 

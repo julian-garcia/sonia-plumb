@@ -14,8 +14,8 @@ if ($the_query->have_posts()) : ?>
             <h3><?php the_title(); ?></h3>
             <p class="flex-grow"><?php echo get_the_excerpt(); ?></p>
             <?php if (get_field("works_link")) : ?>
-              <a href="<?php the_field("works_link"); ?>" class="button-outline w-max z-10">
-                <?php the_field("works_text"); ?>
+              <a href="<?php echo get_field("works_link"); ?>" class="button-outline w-max z-10">
+                <?php echo get_field("works_text"); ?>
               </a>
             <?php endif; ?>
           </div>

@@ -14,21 +14,21 @@ if (isset($_GET['category'])) {
 $currentPageNumber = (int)$page;
 $postsPerPage = 3;
 $postCount = null;
+$readmore = array_search($selected, $args['categories']);
+if ($selected) {
+  $catDesc = substr(strip_tags(category_description(get_category_by_slug($selected)->term_id)), 1);
+}
 
 if ($args['post_type'] == 'partnership') {
   $postsPerPage = $args['posts_page'];
-  $count_posts = wp_count_posts($args['post_type']);
-  if ($count_posts) {
-    $postCount = $count_posts->publish;
-  }
-} else {
-  $cats = get_terms('category');
-  foreach ($cats as $cat) {
-    if ($cat->slug == $selected) {
-      $postCount = $cat->count;
-    }
-  }
 }
+
+$categoryTypePosts = new WP_Query(array(
+  'category_name' => $selected,
+  'post_type' => $args['post_type']
+));
+$postCount = $categoryTypePosts->found_posts;
+
 $pageTotal = $postCount ? ceil($postCount / $postsPerPage) : 0;
 ?>
 <section class="section" id="postListing">
@@ -37,7 +37,7 @@ $pageTotal = $postCount ? ceil($postCount / $postsPerPage) : 0;
       <?php
       $categories = get_categories(
         array(
-          'orderby' => 'name',
+          'orderby' => 'description',
           'order'   => 'ASC',
           'hide_empty' => false,
           'slug' => $args['categories']
@@ -50,6 +50,9 @@ $pageTotal = $postCount ? ceil($postCount / $postsPerPage) : 0;
         </label>
       <?php endforeach; ?>
     </form>
+    <p class="w-[800px] max-w-full">
+      <?php echo $catDesc; ?>
+    </p>
   <?php endif; ?>
   <?php if ($pageTotal > 1) : ?>
     <ul class="pagination flex gap-4 my-8 justify-end text-button-outline">
@@ -110,10 +113,11 @@ $pageTotal = $postCount ? ceil($postCount / $postsPerPage) : 0;
             <?php endif; ?>
             <?php the_excerpt(); ?>
             <a href="<?php the_permalink(); ?>" class="button-outline !text-black">
-              <?php echo $args['read_more']; ?>
+              <?php echo $args['read_more'][$readmore]; ?>
             </a>
           </div>
-          <div class="bg-cover bg-center min-h-[400px] -my-0.5" style="background-image: url('<?php the_post_thumbnail_url() ?>')"></div>
+          <div class="bg-cover bg-center min-h-[400px] -my-0.5" style="background-image: url('<?php the_post_thumbnail_url('large') ?>')">
+          </div>
         </div>
       <?php elseif ($args['post_type'] == 'partnership') : ?>
         <div class="grid md:grid-cols-2">
@@ -126,12 +130,17 @@ $pageTotal = $postCount ? ceil($postCount / $postsPerPage) : 0;
         <div class="grid md:grid-cols-2 gap-4 border-y-2 border-button-outline my-8">
           <div class="my-10">
             <h4><?php the_title(); ?></h4>
-            <?php the_excerpt(); ?>
-            <a href="<?php the_permalink(); ?>" class="button-outline !text-black">
-              <?php echo $args['read_more']; ?>
+            <p class="text-[#949494] -mt-4"><?php echo get_field('level'); ?></p>
+            <?php if ($args['post_type'] == 'class' && $selected === 'classroom') {
+              the_content();
+            } else {
+              the_excerpt();
+            } ?>
+            <a href="<?php echo $args['post_type'] == 'class' && $selected === 'classroom' ? '/contact' :  get_permalink(); ?>" class="button-outline !text-black">
+              <?php echo $args['read_more'][$readmore]; ?>
             </a>
           </div>
-          <div class="bg-cover bg-center min-h-[400px] -my-0.5" style="background-image: url('<?php the_post_thumbnail_url() ?>')"></div>
+          <div class="bg-cover bg-center min-h-[400px] -my-0.5" style="background-image: url('<?php the_post_thumbnail_url('large') ?>')"></div>
         </div>
       <?php endif; ?>
       <?php wp_reset_postdata(); ?>

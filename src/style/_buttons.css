@@ -5,20 +5,21 @@
   .container .content .section .form-wrapper .button {
     @apply bg-button-active text-body-back rounded
       hover:bg-button-hover px-4 py-3 xl:px-8 xl:py-5 inline-block mb-4
-      font-medium transition-colors duration-300 m-0 h-auto;
+      font-medium transition-colors duration-300 m-0 h-auto min-w-[380px] max-w-full text-center;
   }
 
   .button-light,
   .content .button-light {
     @apply bg-white text-black rounded
       hover:bg-black hover:text-white px-4 py-3 xl:px-8 xl:py-5 inline-block mb-4
-      font-medium transition-colors duration-300 m-0;
+      font-medium transition-colors duration-300 m-0 min-w-[380px] max-w-full text-center;
   }
 
   .wp-block-button.is-style-outline .wp-element-button,
-  .button-outline {
-    @apply border-button-outline rounded-[4px] m-0
+  .button-outline,
+  .content .button-outline {
+    @apply border-button-outline rounded-[4px] m-0 text-black
       text-base bg-transparent px-4 py-3 xl:px-8 xl:py-5 border-2 inline-block
-      transition-colors duration-300 hover:border-black;
+      transition-colors duration-300 hover:border-black min-w-[380px] max-w-full text-center;
   }
 }

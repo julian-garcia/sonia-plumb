@@ -5,9 +5,9 @@ get_template_part(
   array(
     'post_type' => 'works',
     'categories'  => ['current', 'work-in-progress', 'repertory'],
-    'default_category' => 'repertory',
+    'default_category' => 'current',
     'form_url' => '/our-stage',
-    'read_more' => 'Learn more'
+    'read_more' => ['Learn more', 'Learn more', 'Learn more']
   )
 ); ?>
 <?php the_content(); ?>

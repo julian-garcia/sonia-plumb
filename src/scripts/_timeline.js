@@ -4,10 +4,10 @@ const timeLine = document.querySelector('.timeline');
 
 timelineNext &&
   timelineNext.addEventListener('click', () => {
-    timeLine.scrollLeft += 250;
+    timeLine.scrollLeft += 330;
   });
 
 timelineBack &&
   timelineBack.addEventListener('click', () => {
-    timeLine.scrollLeft -= 250;
+    timeLine.scrollLeft -= 330;
   });

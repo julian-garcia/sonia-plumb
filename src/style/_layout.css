@@ -46,7 +46,6 @@
 }
 
 .no-feature .logo,
-.team .logo,
-.class .logo {
+.team .logo {
   @apply bg-[image:url('../images/logo-dark.svg')];
 }
