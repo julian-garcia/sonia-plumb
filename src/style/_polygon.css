@@ -87,9 +87,10 @@
     54.611% 0.71%
   );
   animation-name: dancingSquares;
-  animation-duration: 7s;
-  animation-direction: alternate-reverse;
+  animation-duration: 10s;
+  animation-direction: normal;
   animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
 }
 
 @keyframes dancingSquares {

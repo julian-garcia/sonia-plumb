@@ -25,9 +25,9 @@ class Calendar
     $first_day_of_week = array_search(date('D', strtotime($this->active_year . '-' . $this->active_month . '-1')), $days);
     $html = '<div id="calendar" class="calendar-dates relative">';
     $html .= '<div class="header">';
-    $html .= '<h4 class="month-year">';
+    $html .= '<h3 class="month-year">';
     $html .= date('F Y', strtotime($this->active_year . '-' . $this->active_month . '-' . $this->active_day));
-    $html .= '</h4>';
+    $html .= '</h3>';
     $html .= '</div>';
     $html .= '<div class="days">';
     foreach ($days as $day) {

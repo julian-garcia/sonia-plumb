@@ -15,11 +15,16 @@ $the_query = new WP_Query(
   array(
     'post_type' => 'event',
     'post_status' => 'publish',
+    'posts_per_page' => -1,
     'meta_query'  => array(
       array(
         'key'       => 'event_date',
         'compare'   => 'EXISTS',
         'type'      => 'DATE'
+      ),
+      'time' => array(
+        'key' => 'time_1',
+        'compare' => 'EXISTS',
       ),
       array(
         'key' => 'event_date',
@@ -32,7 +37,7 @@ $the_query = new WP_Query(
         'compare' => '<='
       )
     ),
-    'orderby' => array('event_date' => 'DESC')
+    'orderby' => array('event_date' => 'DESC', 'time' => 'ASC')
   )
 ); ?>
 <section class="section">
@@ -43,18 +48,20 @@ $the_query = new WP_Query(
   <div class="grid grid-cols-1 md:grid-cols-[1.5fr,2fr] gap-8 items-start">
     <?php include 'Calendar.php';
     $calendar = new Calendar($year_month); ?>
-    <?php if ($the_query->have_posts()) {
-      while ($the_query->have_posts()) {
-        $the_query->the_post();
-        $dt = date("Y-m-d", strtotime(get_field('event_date')));
-        $calendar->add_event(get_the_ID(), $dt);
-        wp_reset_postdata();
-      }
-    } ?>
+    <?php
+    // if ($the_query->have_posts()) {
+    while ($the_query->have_posts()) {
+      $the_query->the_post();
+      $dt = date("Y-m-d", strtotime(get_field('event_date')));
+      $calendar->add_event(get_the_ID(), $dt);
+      wp_reset_postdata();
+    }
+    // }
+    ?>
     <div class="relative">
       <div class="calendar-nav">
-        <a class="back" href="/calendar?year-month=<?php echo $prev_month; ?>"></a>
-        <a class="next" href="/calendar?year-month=<?php echo $next_month; ?>"></a>
+        <a class="back" href="/calendar?year-month=<?php echo $prev_month; ?>" aria-label="Last month"></a>
+        <a class="next" href="/calendar?year-month=<?php echo $next_month; ?>" aria-label="Next month"></a>
       </div>
       <?php echo $calendar; ?>
     </div>
@@ -126,6 +133,10 @@ $the_query = new WP_Query(
             </div>
             <?php if (get_field('event_link')['url']) : ?>
               <a href="<?php echo get_field('event_link')['url']; ?>" class="button">
+                <?php echo get_field('event_link')['text'] ? get_field('event_link')['text'] : 'RSVP'; ?>
+              </a>
+            <?php else : ?>
+              <a href="/contact" class="button">
                 <?php echo get_field('event_link')['text'] ? get_field('event_link')['text'] : 'RSVP'; ?>
               </a>
             <?php endif; ?>

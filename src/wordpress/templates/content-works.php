@@ -20,7 +20,7 @@ if ($the_query->have_posts()) : ?>
             <?php endif; ?>
           </div>
           <div class="works-image" style="background-image: url('<?php the_post_thumbnail_url() ?>')"></div>
-          <a class="absolute w-full h-full" href="<?php the_permalink(); ?>"></a>
+          <a class="absolute w-full h-full" href="<?php the_permalink(); ?>" aria-label="<?php the_title(); ?>"></a>
         </div>
         <?php wp_reset_postdata(); ?>
       <?php endwhile; ?>

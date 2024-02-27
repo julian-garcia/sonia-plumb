@@ -92,31 +92,44 @@ $pageTotal = $postCount ? ceil($postCount / $postsPerPage) : 0;
     </ul>
   <?php endif; ?>
   <?php
+  $orderBy = 'name';
+  $order = 'ASC';
+
+  if ($args['post_type'] == 'works') {
+    $orderBy = 'date';
+    $order = 'DESC';
+  }
   $the_query = new WP_Query(
     array(
       'post_type' => $args['post_type'],
       'posts_per_page' => $postsPerPage,
       'category_name' => $selected,
       'paged' => $page,
-      'orderby' => 'title',
-      'order' => 'ASC'
+      'orderby' => $orderBy,
+      'order' => $order
     )
   );
   if ($the_query->have_posts()) : ?>
     <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
       <?php if ($args['post_type'] == 'team') : ?>
         <div class="team-card">
-          <div class="my-10 px-8">
+          <div class="my-4 sm:my-10 px-4 sm:px-8">
             <h4><?php the_title(); ?></h4>
             <?php if (get_field("position")) : ?>
               <p class="text-[#949494]"><?php echo get_field("position"); ?></p>
             <?php endif; ?>
             <?php the_excerpt(); ?>
-            <a href="<?php the_permalink(); ?>" class="button-outline !text-black">
+            <a href="<?php the_permalink(); ?>" class="button-outline !text-black" aria-label="<?php the_title(); ?>">
               <?php echo $args['read_more'][$readmore]; ?>
             </a>
           </div>
-          <div class="bg-cover bg-center min-h-[400px] -my-0.5" style="background-image: url('<?php the_post_thumbnail_url('large') ?>')">
+          <?php $bgCover = 'bg-contain opacity-10';
+          $bgImg = '';
+          if (get_the_post_thumbnail_url(get_the_ID())) {
+            $bgCover = 'bg-cover opacity-100';
+            $bgImg = "background-image: url('" . get_the_post_thumbnail_url(get_the_ID(), 'large') . "')";
+          } ?>
+          <div class="<?php echo $bgCover; ?> bg-center bg-gray-400 bg-no-repeat min-h-[400px] -my-0.5 bg-[url('../images/logo-square.svg')]" style="<?php echo $bgImg; ?>">
           </div>
         </div>
       <?php elseif ($args['post_type'] == 'partnership') : ?>
@@ -129,18 +142,23 @@ $pageTotal = $postCount ? ceil($postCount / $postsPerPage) : 0;
       <?php else : ?>
         <div class="grid md:grid-cols-2 gap-4 border-y-2 border-button-outline my-8">
           <div class="my-10">
-            <h4><?php the_title(); ?></h4>
+            <h4 class="inline-block"><?php the_title(); ?></h4>
+            <?php if ($args['post_type'] == 'works') : ?>
+              <span class="text-xl font-light">
+                (<?php echo get_the_date('Y'); ?>)
+              </span>
+            <?php endif; ?>
             <p class="text-[#949494] -mt-4"><?php echo get_field('level'); ?></p>
-            <?php if ($args['post_type'] == 'class' && $selected === 'classroom') {
+            <?php if ($args['post_type'] == 'class' && in_array($selected, ['classroom', 'contextual-dance'])) {
               the_content();
             } else {
               the_excerpt();
             } ?>
-            <a href="<?php echo $args['post_type'] == 'class' && $selected === 'classroom' ? '/contact' :  get_permalink(); ?>" class="button-outline !text-black">
+            <a href="<?php echo $args['post_type'] == 'class' && $selected === 'classroom' ? '/contact' :  get_permalink(); ?>" class="button-outline !text-black" aria-label="<?php the_title(); ?>">
               <?php echo $args['read_more'][$readmore]; ?>
             </a>
           </div>
-          <div class="bg-cover bg-center min-h-[400px] -my-0.5" style="background-image: url('<?php the_post_thumbnail_url('large') ?>')"></div>
+          <div class="bg-cover bg-center bg-no-repeat min-h-[400px] -my-0.5" style="background-image: url('<?php the_post_thumbnail_url('large') ?>')"></div>
         </div>
       <?php endif; ?>
       <?php wp_reset_postdata(); ?>

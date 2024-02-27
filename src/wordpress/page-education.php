@@ -4,10 +4,10 @@ get_template_part(
   'listing',
   array(
     'post_type' => 'class',
-    'categories'  => ['class', 'workshop', 'classroom'],
+    'categories'  => ['class', 'workshop', 'classroom', 'contextual-dance'],
     'default_category' => 'class',
     'form_url' => '/education',
-    'read_more' => ['Learn more', 'Learn more', 'Bring us to your classroom']
+    'read_more' => ['Learn more', 'Learn more', 'Bring us to your classroom', 'Contact us']
   )
 ); ?>
 <?php the_content(); ?>

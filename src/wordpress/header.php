@@ -20,7 +20,7 @@
 
 <body class="body <?php echo is_front_page() ? 'home' : "$postType $feature $pageSlug"; ?>">
   <div class="container">
-    <a class="logo" href="/"></a>
+    <a class="logo" href="/" aria-label="Sonia Plumb Dance Company - home"></a>
     <?php
     wp_nav_menu(
       array(

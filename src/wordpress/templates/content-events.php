@@ -4,18 +4,22 @@ $meta_query = array(array(
   'value'   => date('Ymd'),
   'compare' => '<'
 ));
+$order_by = 'DESC';
 if ($args['future'] == 'true') {
   $meta_query = array(array(
     'key' => 'event_date',
     'value'   => date('Ymd'),
     'compare' => '>='
   ));
+  $order_by = 'ASC';
 }
 $the_query = new WP_Query(
   array(
     'post_type' => 'event',
     'post_status' => 'publish',
+    'posts_per_page' => 6,
     'meta_query'  => $meta_query,
+    'orderby' => array('event_date' => $order_by)
   )
 );
 if ($the_query->have_posts()) : ?>

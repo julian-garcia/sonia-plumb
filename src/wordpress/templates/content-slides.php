@@ -13,11 +13,11 @@ if ($the_query->have_posts()) : ?>
           <div class="image" style="background-image: url('<?php the_post_thumbnail_url() ?>')"></div>
           <div id="hoverImage"></div>
           <div class="slide-title">
-            <h4><?php echo get_the_excerpt(); ?></h4>
+            <p class="text-xl font-bold m-0"><?php echo get_the_excerpt(); ?></p>
             <h1><?php the_title(); ?></h1>
           </div>
           <?php if (get_field("slide_link")) : ?>
-            <a href="<?php echo get_field("slide_link"); ?>" class="absolute w-full h-[calc(100%-8rem)] top-32 left-0 z-30"></a>
+            <a href="<?php echo get_field("slide_link"); ?>" class="absolute w-full h-[calc(100%-8rem)] top-32 left-0 z-30" aria-label="<?php the_title(); ?>"></a>
           <?php endif; ?>
         </div>
       <?php endwhile; ?>

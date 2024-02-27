@@ -5,8 +5,9 @@
     <h2 class="mb-0">Gallery</h2>
     <div class="swiper slider swiper-gallery">
       <div class="swiper-wrapper">
-        <?php for ($i = 1; $i <= 5; $i++) :
+        <?php for ($i = 1; $i <= 10; $i++) :
           $image = get_field("gallery_image_$i");
+          $url = '';
           if ($image) {
             $url = $image['url'];
             $medium = $image['sizes']['large'];

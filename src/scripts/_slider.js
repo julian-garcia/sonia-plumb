@@ -6,6 +6,7 @@ import {
   Pagination,
   Scrollbar,
 } from 'swiper/modules';
+const gallery = document.querySelector('.swiper-gallery');
 
 export const swiper = new Swiper('.swiper-slides', {
   modules: [Navigation, Autoplay, EffectFade, Pagination],
@@ -102,7 +103,8 @@ export const swiperEventsPast = new Swiper('.swiper.events.past', {
 
 export const swiperGallery = new Swiper('.swiper-gallery', {
   modules: [Navigation, Autoplay, Scrollbar],
-  loop: true,
+  loop: false,
+
   spaceBetween: 32,
   speed: 1200,
   centeredSlides: true,
@@ -118,6 +120,7 @@ export const swiperGallery = new Swiper('.swiper-gallery', {
     prevEl: '.swiper-button-prev',
   },
 });
+gallery && swiperGallery.slideNext();
 
 function hoverEffect(sw) {
   const nextIndex =
