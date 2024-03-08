@@ -7,7 +7,7 @@
 }
 
 .categories label {
-  @apply block cursor-pointer text-2xl mb-3;
+  @apply block cursor-pointer text-2xl mb-3 h-fit;
 }
 
 .categories .selected {

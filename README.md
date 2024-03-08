@@ -5,6 +5,7 @@
 This is a custom WordPress theme, built on a voluntary basis for non profit organisation "Sonia Plumb Dance Company".
 
 ![Built](https://ForTheBadge.com/images/badges/built-with-love.svg)
+
 ![WordPress](https://img.shields.io/badge/Wordpress-21759B?style=for-the-badge&logo=wordpress&logoColor=white)
 ![VS Code](https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)
 ![JS](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
@@ -25,17 +26,21 @@ This is a custom WordPress theme, built on a voluntary basis for non profit orga
 
 - Advanced Custom Fields
 - WP Forms Lite
-- Wordfence
 
 An online WordPress instance generator such as TasteWP can be used for test deployments.
+
+## Recommended plugins
+
+- Image optimiser (eg Smush)
+- Security/firewall (eg Wordfence)
 
 ## Developer Notes
 
 Serve a local instance of WordPress, e.g. using LocalWP
 
-Navigate to this source folder and add a link to the local wordpress theme. The link name should `dist-local`.
-`ln -s /<path of local WP>/wp-content/themes/sonia-plumb dist-local`
+Clone this repository and go to the source folder and add a link to the local wordpress theme. The link name should be called `dist-local`.
+`ln -s /<path-of-local-WP>/wp-content/themes/sonia-plumb dist-local`
 
 To serve the theme locally, switch to the correct node version with `nvm use`, install dependencies with `npm i` and run `npm start`. This will build assests and watch for changes. Any css/js/php changes will result copy templates to the dist folder and rebuild assets.
 
-To build the theme: `npm run build`.
+To build the theme for production: `npm run build`. This builds assets, as above, and also packages the theme in to a zip file.

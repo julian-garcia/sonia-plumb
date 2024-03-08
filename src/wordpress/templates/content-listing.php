@@ -106,7 +106,8 @@ $pageTotal = $postCount ? ceil($postCount / $postsPerPage) : 0;
       'category_name' => $selected,
       'paged' => $page,
       'orderby' => $orderBy,
-      'order' => $order
+      'order' => $order,
+      'post_status' => array('publish', 'future')
     )
   );
   if ($the_query->have_posts()) : ?>
@@ -158,7 +159,8 @@ $pageTotal = $postCount ? ceil($postCount / $postsPerPage) : 0;
               <?php echo $args['read_more'][$readmore]; ?>
             </a>
           </div>
-          <div class="bg-cover bg-center bg-no-repeat min-h-[400px] -my-0.5" style="background-image: url('<?php the_post_thumbnail_url('large') ?>')"></div>
+          <?php $bgCover = get_field('fit_feature_image') ? 'bg-contain' : 'bg-cover'; ?>
+          <div class="<?php echo $bgCover; ?> bg-center bg-no-repeat min-h-[400px] -my-0.5" style="background-image: url('<?php the_post_thumbnail_url('large') ?>')"></div>
         </div>
       <?php endif; ?>
       <?php wp_reset_postdata(); ?>

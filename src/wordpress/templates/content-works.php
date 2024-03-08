@@ -13,10 +13,10 @@ if ($the_query->have_posts()) : ?>
           <div class="works-text flex flex-col">
             <h3><?php the_title(); ?></h3>
             <p class="flex-grow"><?php echo get_the_excerpt(); ?></p>
-            <?php if (get_field("works_link")) : ?>
-              <a href="<?php echo get_field("works_link"); ?>" class="button-outline w-max z-10">
+            <?php if (get_field("works_text")) : ?>
+              <span class="button-outline w-max">
                 <?php echo get_field("works_text"); ?>
-              </a>
+              </span>
             <?php endif; ?>
           </div>
           <div class="works-image" style="background-image: url('<?php the_post_thumbnail_url() ?>')"></div>

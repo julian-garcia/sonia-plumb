@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 <div class="banner">
-  <div class="image" style="background-image: url('<?php the_post_thumbnail_url() ?>')">
+  <div class="image" style="background-image: url('<?php the_post_thumbnail_url() ?>'); background-position: <?php echo get_field("position"); ?>">
   </div>
 </div>
 <section class="section">

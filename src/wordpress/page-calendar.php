@@ -37,7 +37,7 @@ $the_query = new WP_Query(
         'compare' => '<='
       )
     ),
-    'orderby' => array('event_date' => 'DESC', 'time' => 'ASC')
+    'orderby' => array('event_date' => 'ASC', 'time' => 'ASC')
   )
 ); ?>
 <section class="section">
@@ -49,14 +49,12 @@ $the_query = new WP_Query(
     <?php include 'Calendar.php';
     $calendar = new Calendar($year_month); ?>
     <?php
-    // if ($the_query->have_posts()) {
     while ($the_query->have_posts()) {
       $the_query->the_post();
       $dt = date("Y-m-d", strtotime(get_field('event_date')));
       $calendar->add_event(get_the_ID(), $dt);
       wp_reset_postdata();
     }
-    // }
     ?>
     <div class="relative">
       <div class="calendar-nav">
@@ -118,10 +116,21 @@ $the_query = new WP_Query(
             <?php the_content(); ?>
             <a href="<?php echo get_the_permalink(get_field('stage')->ID); ?>" class="font-medium -mt-3 block">More info...</a>
             <div class="flex gap-4 my-4">
-              <span class="text-button-active font-semibold">
-                <?php echo get_field('venue'); ?>
-              </span>
-              <span><?php echo get_field('event_date'); ?></span>
+              <?php if (get_field('venue_link')) : ?>
+                <a class="font-semibold" href="<?php echo get_field('venue_link'); ?>" target="_blank">
+                  <?php echo get_field('venue'); ?>
+                </a>
+              <?php else : ?>
+                <span class="font-semibold">
+                  <?php echo get_field('venue'); ?>
+                </span>
+              <?php endif; ?>
+              <div>
+                <span><?php echo get_field('event_date'); ?></span>
+                <?php if (get_field('event_end_date')) : ?>
+                  <span>- <?php echo get_field('event_end_date'); ?></span>
+                <?php endif; ?>
+              </div>
             </div>
             <div class="flex gap-4 my-4">
               <span class="text-button-active font-semibold">
