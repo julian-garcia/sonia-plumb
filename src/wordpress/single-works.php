@@ -17,7 +17,9 @@
   <h2 class="inline-block">
     <?php the_title(); ?>
   </h2>
-  <span class="text-3xl font-light">(<?php echo get_the_date('Y'); ?>)</span>
+  <span class="text-3xl font-light">
+    (<?php echo get_field('works_year') ?? get_the_date('Y'); ?>)
+  </span>
   <?php the_content(); ?>
 </section>
 <?php if (get_field('artistic_team') or get_field('dancers') or get_field('education_team') or get_field('music')) : ?>

@@ -1,5 +1,5 @@
 .categories {
-  @apply block gap-16 my-8 mt-16 sm:flex md:gap-32;
+  @apply block gap-16 my-8 mt-16 sm:flex md:gap-16;
 }
 
 .categories input[type='radio'] {

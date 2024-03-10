@@ -5,7 +5,7 @@ get_template_part(
   array(
     'post_type' => 'class',
     'categories'  => ['class', 'workshop', 'classroom', 'contextual-dance'],
-    'default_category' => 'class',
+    'default_category' => 'workshop',
     'form_url' => '/education',
     'read_more' => ['Learn more', 'Learn more', 'Bring us to your classroom', 'Contact us']
   )
