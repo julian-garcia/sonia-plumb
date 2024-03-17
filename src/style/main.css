@@ -16,6 +16,7 @@
 @import './_accordion.css';
 @import './_select.css';
 @import './_polygon.css';
+@import './_newsletter.css';
 @import '/node_modules/swiper/swiper-bundle.css';
 
 @tailwind base;
@@ -40,4 +41,9 @@ h4 {
 .wp-block-separator,
 hr {
   @apply max-w-7xl border-button-outline my-20 mx-auto;
+}
+
+.notransition * {
+  transition: none !important;
+  animation: none !important;
 }

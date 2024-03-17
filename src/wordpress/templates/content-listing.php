@@ -146,7 +146,7 @@ $pageTotal = $postCount ? ceil($postCount / $postsPerPage) : 0;
             <h4 class="inline-block"><?php the_title(); ?></h4>
             <?php if ($args['post_type'] == 'works') : ?>
               <span class="text-xl font-light">
-                (<?php echo get_field('works_year') ?? get_the_date('Y'); ?>)
+                (<?php echo get_field('works_year') ?: get_the_date('Y'); ?>)
               </span>
             <?php endif; ?>
             <p class="text-[#949494] -mt-4"><?php echo get_field('level'); ?></p>

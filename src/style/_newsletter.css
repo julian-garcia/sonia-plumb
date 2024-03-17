@@ -1,0 +1,31 @@
+.newsletter-signup {
+  @apply fixed bottom-10 left-1/2 -translate-x-1/2 bg-white rounded z-20
+  w-[calc(100%-2rem)] max-w-[420px] p-4 py-0 overflow-hidden border-0 border-shaded
+  shadow-none transition-[padding,max-height] ease-in-out duration-500 max-h-0;
+}
+
+.newsletter-signup.show {
+  @apply p-4 border-2 max-h-[2000px];
+  box-shadow: 0px 0px 15px 4px rgba(0, 0, 0, 0.15);
+}
+
+.newsletter-signup input[type='email'] {
+  @apply w-full max-w-full rounded-[4px] border-shaded border-2 p-2;
+}
+
+.newsletter-signup .mce_inline_error {
+  @apply text-red-700;
+}
+
+.newsletter-signup-toggle {
+  @apply bg-white w-12 h-12 fixed bottom-4 left-1/2 -translate-x-1/2 z-50
+  rounded-full border-2 cursor-pointer hover:bg-shaded hover:border-white
+  transition-colors;
+  box-shadow: 0px 0px 15px 4px rgba(0, 0, 0, 0.15);
+}
+
+.newsletter-signup-toggle::before {
+  @apply bg-[url(../images/newsletter.svg)] bg-no-repeat bg-contain
+  content-[''] absolute w-7 h-7 left-1/2 top-1/2 -translate-x-1/2
+  -translate-y-1/2;
+}

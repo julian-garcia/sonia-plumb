@@ -5,6 +5,7 @@ import './_calendar';
 import './_timeline';
 import './_menu';
 import './_accordion';
+import './_newsletter';
 
 document.addEventListener('DOMContentLoaded', () => {
   const postListing = document.getElementById('postListing');
@@ -16,4 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
   ) {
     postListing.scrollIntoView();
   }
+});
+
+let resizeTimer;
+window.addEventListener('resize', () => {
+  document.body.classList.add('notransition');
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => {
+    document.body.classList.remove('notransition');
+  }, 400);
 });

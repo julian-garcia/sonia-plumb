@@ -9,7 +9,7 @@
     <?php $post_categories = get_the_category();
     if ($post_categories) {
       foreach ($post_categories as $category) {
-        echo '<a class="!text-[#949494]" href="/our-stage?category=' . $category->slug . '">' . $category->name . '</a>';
+        echo '<a class="!text-[#644d4d]" href="/our-stage?category=' . $category->slug . '">' . $category->name . '</a>';
       }
     } ?> /
     <?php the_title(); ?>
@@ -18,7 +18,7 @@
     <?php the_title(); ?>
   </h2>
   <span class="text-3xl font-light">
-    (<?php echo get_field('works_year') ?? get_the_date('Y'); ?>)
+    (<?php echo get_field('works_year') ?: get_the_date('Y'); ?>)
   </span>
   <?php the_content(); ?>
 </section>

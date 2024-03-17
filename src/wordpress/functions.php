@@ -6,6 +6,7 @@ function theme_scripts()
   wp_enqueue_style('sonia-plumb', get_template_directory_uri() . '/assets/{index.css}', '', $version);
   wp_enqueue_script('polyfill', 'https://polyfill.io/v3/polyfill.min.js', '', $version, true);
   wp_enqueue_script('sonia-plumb', get_template_directory_uri() . '/assets/{index.js}', '', $version, true);
+  wp_enqueue_script('mailchimp', 'https://s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js', '', $version, true);
 }
 
 function setup_menus()

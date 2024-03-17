@@ -1,5 +1,6 @@
 .footer {
-  @apply min-h-[400px] bg-black -m-4 mt-8 py-12 text-white px-4;
+  @apply min-h-[400px] bg-black -m-4 mt-8 py-12 text-white
+  px-4 pb-28 lg:pb-20 xl:pb-4;
 }
 
 .footer .logo {

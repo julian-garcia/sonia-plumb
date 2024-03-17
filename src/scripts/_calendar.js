@@ -39,11 +39,11 @@ if (calendar) {
         dayNum.classList.add('selected');
       }
     });
-    selectedValue.textContent = 'Filter';
+    selectedValue && (selectedValue.textContent = 'Filter');
     const el = document.getElementsByName('event-category');
     for (let i = 0; i < el.length; i++) el[i].checked = false;
-    selectDropdown.classList.remove('active');
-    selectArrow.classList.remove('active');
+    selectDropdown && selectDropdown.classList.remove('active');
+    selectArrow && selectArrow.classList.remove('active');
   });
 
   selectButton &&
@@ -59,7 +59,7 @@ if (calendar) {
   inputFilters &&
     inputFilters.forEach((inputFilter) => {
       inputFilter.addEventListener('click', () => {
-        selectedValue.textContent = inputFilter.id;
+        selectedValue && (selectedValue.textContent = inputFilter.id);
         selectDropdown.classList.toggle('active');
         selectArrow.classList.toggle('active');
         const events = document.querySelectorAll(
