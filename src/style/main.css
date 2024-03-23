@@ -43,6 +43,10 @@ hr {
   @apply max-w-7xl border-button-outline my-20 mx-auto;
 }
 
+figure {
+  @apply mb-8;
+}
+
 .notransition * {
   transition: none !important;
   animation: none !important;

@@ -18,7 +18,7 @@
   .wp-block-button.is-style-outline .wp-element-button,
   .button-outline,
   .content .button-outline {
-    @apply border-button-outline rounded-[4px] m-0 text-black
+    @apply border-button-outline rounded-[4px] m-0 text-black mb-4
       text-base bg-transparent px-4 py-3 xl:px-8 xl:py-5 border-2 inline-block
       transition-colors duration-300 hover:border-black sm:min-w-[380px] max-w-full text-center cursor-pointer;
   }

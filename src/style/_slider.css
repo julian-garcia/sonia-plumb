@@ -195,7 +195,7 @@
 }
 
 .swiper.events {
-  @apply w-[600px] mx-0 max-w-full pt-8;
+  @apply w-full mx-0 max-w-full pt-8;
 }
 
 .swiper.events .swiper-pagination {

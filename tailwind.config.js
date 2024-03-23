@@ -19,6 +19,9 @@ export default {
         inactive: '#F2F3F7',
         'inactive-text': '#D5D4DF',
       },
+      screens: {
+        sh: { raw: '(min-height: 600px)' },
+      },
     },
   },
   blocklist: ['container'],

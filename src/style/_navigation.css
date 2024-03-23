@@ -4,7 +4,7 @@
 }
 
 .menu-navigation {
-  @apply block fixed h-auto max-h-[calc(100vh-5rem)] top-14 p-6 pb-16 bg-white text-black -right-full transition-[right] duration-300 rounded-l z-30 overflow-y-scroll;
+  @apply block fixed h-auto max-h-[calc(100vh-5rem)] top-14 p-6 pb-16 bg-white text-black -right-full transition-[right] duration-300 rounded-l z-[100] overflow-y-scroll;
 }
 
 @screen lg {

@@ -1,16 +1,22 @@
 .newsletter-signup {
-  @apply fixed bottom-10 left-1/2 -translate-x-1/2 bg-white rounded z-20
-  w-[calc(100%-2rem)] max-w-[420px] p-4 py-0 overflow-hidden border-0 border-shaded
-  shadow-none transition-[padding,max-height] ease-in-out duration-500 max-h-0;
+  @apply fixed bottom-10 sh:top-[unset] top-2 left-1/2 -translate-x-1/2
+  bg-white rounded z-20 w-[calc(100%-2rem)] max-w-[420px] p-4 py-0
+  overflow-hidden border-0 border-shaded shadow-none
+  transition-[padding,max-height] ease-in-out duration-500 max-h-0;
 }
 
 .newsletter-signup.show {
-  @apply p-4 border-2 max-h-[2000px];
+  @apply p-4 border-2 max-h-[2000px] overflow-y-scroll sh:overflow-y-hidden;
   box-shadow: 0px 0px 15px 4px rgba(0, 0, 0, 0.15);
 }
 
-.newsletter-signup input[type='email'] {
+.newsletter-signup input[type='email'],
+.newsletter-signup input[type='text'] {
   @apply w-full max-w-full rounded-[4px] border-shaded border-2 p-2;
+}
+
+.newsletter-signup ul li {
+  @apply flex leading-tight mb-3 gap-4;
 }
 
 .newsletter-signup .mce_inline_error {

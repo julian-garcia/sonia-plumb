@@ -116,14 +116,16 @@ $the_query = new WP_Query(
             <?php the_content(); ?>
             <a href="<?php echo get_the_permalink(get_field('stage')->ID); ?>" class="font-medium -mt-3 block">More info...</a>
             <div class="flex gap-4 my-4">
-              <?php if (get_field('venue_link')) : ?>
-                <a class="font-semibold" href="<?php echo get_field('venue_link'); ?>" target="_blank">
-                  <?php echo get_field('venue'); ?>
-                </a>
-              <?php else : ?>
-                <span class="font-semibold">
-                  <?php echo get_field('venue'); ?>
-                </span>
+              <?php if (get_field('venue')) : ?>
+                <?php if (get_field('venue_link')) : ?>
+                  <a class="font-semibold" href="<?php echo get_field('venue_link'); ?>" target="_blank">
+                    <?php echo get_field('venue'); ?>
+                  </a>
+                <?php else : ?>
+                  <span class="font-semibold">
+                    <?php echo get_field('venue'); ?>
+                  </span>
+                <?php endif; ?>
               <?php endif; ?>
               <div>
                 <span><?php echo get_field('event_date'); ?></span>
