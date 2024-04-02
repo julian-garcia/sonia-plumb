@@ -35,7 +35,7 @@ if ($the_query->have_posts()) : ?>
               <p><?php echo get_the_excerpt(); ?></p>
             </div>
             <?php if (get_post_thumbnail_id()) : ?>
-              <div class="bg-contain bg-no-repeat min-h-[400px] w-full" style="background-image: url('<?php the_post_thumbnail_url() ?>')">
+              <div class="bg-contain bg-no-repeat min-h-[400px] w-full" style="background-image: url('<?php the_post_thumbnail_url('large') ?>')">
               </div>
             <?php endif; ?>
           </div>
