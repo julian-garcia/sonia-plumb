@@ -40,11 +40,15 @@ h4 {
 
 .wp-block-separator,
 hr {
-  @apply max-w-7xl border-button-outline my-20 mx-auto;
+  @apply max-w-7xl border-button-outline my-12 mx-auto;
 }
 
 figure {
   @apply mb-8;
+}
+
+.content ul:not(.pagination) {
+  @apply list-disc ml-4;
 }
 
 .notransition * {

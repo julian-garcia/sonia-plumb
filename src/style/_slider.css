@@ -150,7 +150,7 @@
 }
 
 .timeline {
-  @apply grid gap-8 w-full xl:w-[calc(100vw-300px)] max-w-full md:max-w-[unset] overflow-x-scroll grid-flow-col relative scroll-smooth;
+  @apply grid gap-8 w-full xl:w-[calc(100vw-350px)] max-w-full md:max-w-[unset] overflow-x-scroll grid-flow-col relative scroll-smooth;
 }
 
 .timeline-nav {
@@ -162,7 +162,7 @@
 }
 
 .timeline-point::after {
-  @apply content-[''] absolute left-6 top-2.5 h-1 w-[calc(300px+1rem)] bg-[#949494];
+  @apply content-[''] absolute left-6 top-2.5 h-1 w-[calc(350px+1rem)] bg-[#949494];
 }
 
 .timeline-event:last-child .timeline-point::after {
@@ -170,7 +170,7 @@
 }
 
 .timeline-event {
-  @apply grid min-w-[300px] z-10;
+  @apply grid min-w-[350px] z-10;
   grid-template-rows: 1fr 2rem auto 1fr;
 }
 
@@ -179,7 +179,10 @@
 }
 
 .timeline-text {
-  @apply self-end;
+  @apply self-end h-44 overflow-y-auto;
+}
+
+.timeline-text p {
 }
 
 .timeline-event:nth-child(even) .timeline-point {

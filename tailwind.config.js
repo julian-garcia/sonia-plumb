@@ -25,5 +25,6 @@ export default {
     },
   },
   blocklist: ['container'],
+  safelist: ['p-8', 'my-2'],
   plugins: [],
 };

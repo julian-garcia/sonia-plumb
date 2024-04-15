@@ -50,12 +50,12 @@ $pageTotal = $postCount ? ceil($postCount / $postsPerPage) : 0;
         </label>
       <?php endforeach; ?>
     </form>
-    <p class="w-[800px] max-w-full">
+    <p class="w-[800px] max-w-full text-center mx-auto mb-16">
       <?php echo $catDesc; ?>
     </p>
   <?php endif; ?>
   <?php if ($pageTotal > 1) : ?>
-    <ul class="pagination flex gap-4 my-8 justify-end text-button-outline">
+    <ul class="pagination flex gap-4 -mt-12 mb-6 justify-end text-button-outline">
       <?php for ($i = 1; $i <= $pageTotal; $i++) : ?>
         <?php if ($i == 1) : ?>
           <?php if ($currentPageNumber == 1) : ?>
@@ -95,7 +95,7 @@ $pageTotal = $postCount ? ceil($postCount / $postsPerPage) : 0;
   $orderBy = 'name';
   $order = 'ASC';
 
-  if ($args['post_type'] == 'works') {
+  if ($args['post_type'] == 'works' || $args['post_type'] == 'class') {
     $orderBy = 'date';
     $order = 'DESC';
   }
@@ -135,9 +135,20 @@ $pageTotal = $postCount ? ceil($postCount / $postsPerPage) : 0;
         </div>
       <?php elseif ($args['post_type'] == 'partnership') : ?>
         <div class="grid md:grid-cols-2">
-          <h4 class="mb-4">
-            <a href="<?php echo get_field('partner_link'); ?>" target="_blank" rel="noopener noreferrer"><?php the_title(); ?></a>
-          </h4>
+          <div class="mb-4">
+            <?php if (!get_the_post_thumbnail()) : ?>
+              <h4 class="mb-0">
+                <a href="<?php echo get_field('partner_link'); ?>" target="_blank" rel="noopener noreferrer">
+                  <?php the_title(); ?>
+                </a>
+              </h4>
+            <?php else : ?>
+              <div class="bg-left bg-no-repeat h-[20px] bg-contain relative" style="background-image: url('<?php the_post_thumbnail_url('large') ?>');">
+                <a class="absolute w-full h-full" href="<?php echo get_field('partner_link'); ?>" target="_blank" rel="noopener noreferrer">
+                </a>
+              </div>
+            <?php endif; ?>
+          </div>
           <div><?php the_content(); ?></div>
         </div>
       <?php else : ?>
@@ -160,7 +171,7 @@ $pageTotal = $postCount ? ceil($postCount / $postsPerPage) : 0;
             </a>
           </div>
           <?php $bgCover = get_field('fit_feature_image') ? 'bg-contain' : 'bg-cover'; ?>
-          <div class="<?php echo $bgCover; ?> bg-center bg-no-repeat min-h-[400px] -my-0.5" style="background-image: url('<?php the_post_thumbnail_url('large') ?>')"></div>
+          <div class="<?php echo $bgCover; ?> bg-right bg-no-repeat min-h-[400px] -my-0.5" style="background-image: url('<?php the_post_thumbnail_url('large') ?>')"></div>
         </div>
       <?php endif; ?>
       <?php wp_reset_postdata(); ?>

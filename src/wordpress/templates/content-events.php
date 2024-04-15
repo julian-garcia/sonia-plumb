@@ -30,7 +30,9 @@ if ($the_query->have_posts()) : ?>
         <div class="swiper-slide">
           <div class="grid gap-4 <?php echo get_post_thumbnail_id() ? 'md:grid-cols-2' : '' ?>">
             <div class="max-w-[600px]">
-              <a href="<?php echo get_the_permalink(get_field('stage')->ID); ?>" class="font-medium text-2xl block mb-4"><?php the_title(); ?></a>
+              <?php if (get_field('stage')) : ?>
+                <a href="<?php echo get_the_permalink(get_field('stage')->ID); ?>" class="font-medium text-2xl block mb-4"><?php the_title(); ?></a>
+              <?php endif; ?>
               <p class="font-medium"><?php echo get_field('event_date'); ?></p>
               <p><?php echo get_the_excerpt(); ?></p>
             </div>

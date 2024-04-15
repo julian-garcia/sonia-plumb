@@ -1,8 +1,10 @@
 <?php get_header(); ?>
-<div class="banner">
-  <div class="image" style="background-image: url('<?php the_post_thumbnail_url() ?>')">
+<?php if (get_post_thumbnail_id()) : ?>
+  <div class="banner">
+    <div class="image" style="background-image: url('<?php the_post_thumbnail_url() ?>')">
+    </div>
   </div>
-</div>
+<?php endif; ?>
 <section class="section">
   <div class="mb-10 text-[#949494]">
     <a href="/education" class="!text-[#949494]">Education</a> /

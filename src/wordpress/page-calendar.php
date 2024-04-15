@@ -114,7 +114,9 @@ $the_query = new WP_Query(
               } ?>
             </h4>
             <?php the_content(); ?>
-            <a href="<?php echo get_the_permalink(get_field('stage')->ID); ?>" class="font-medium -mt-3 block">More info...</a>
+            <?php if (get_field('stage')) : ?>
+              <a href="<?php echo get_the_permalink(get_field('stage')->ID); ?>" class="font-medium -mt-3 block">More info...</a>
+            <?php endif; ?>
             <div class="flex gap-4 my-4">
               <?php if (get_field('venue')) : ?>
                 <?php if (get_field('venue_link')) : ?>
@@ -127,20 +129,22 @@ $the_query = new WP_Query(
                   </span>
                 <?php endif; ?>
               <?php endif; ?>
-              <div>
+              <div class="font-semibold">
                 <span><?php echo get_field('event_date'); ?></span>
                 <?php if (get_field('event_end_date')) : ?>
                   <span>- <?php echo get_field('event_end_date'); ?></span>
                 <?php endif; ?>
               </div>
             </div>
-            <div class="flex gap-4 my-4">
+            <div class="flex gap-1.5 my-4">
               <span class="text-button-active font-semibold">
                 <?php echo get_field('time_1'); ?>
               </span>
-              <span class="text-button-active font-semibold">
-                <?php echo get_field('time_2'); ?>
-              </span>
+              <?php if (get_field('time_2')) : ?>
+                <span class="text-button-active font-semibold">-
+                  <?php echo get_field('time_2'); ?>
+                </span>
+              <?php endif; ?>
             </div>
             <?php if (get_field('event_link')['url']) : ?>
               <a href="<?php echo get_field('event_link')['url']; ?>" class="button">

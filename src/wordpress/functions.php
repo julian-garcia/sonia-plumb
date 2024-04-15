@@ -214,7 +214,7 @@ function partnership_post_type()
       'has_archive' => false,
       'show_in_rest' => true,
       'supports' => array(
-        'title', 'editor'
+        'title', 'editor', 'thumbnail'
       )
     )
   );
