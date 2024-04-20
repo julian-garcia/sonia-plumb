@@ -125,13 +125,11 @@ $pageTotal = $postCount ? ceil($postCount / $postsPerPage) : 0;
             </a>
           </div>
           <?php $bgCover = 'bg-contain opacity-10';
-          $bgImg = '';
-          if (get_the_post_thumbnail_url(get_the_ID())) {
-            $bgCover = 'bg-cover opacity-100';
-            $bgImg = "background-image: url('" . get_the_post_thumbnail_url(get_the_ID(), 'large') . "')";
-          } ?>
-          <div class="<?php echo $bgCover; ?> bg-center bg-gray-400 bg-no-repeat min-h-[400px] -my-0.5 bg-[url('../images/logo-square.svg')]" style="<?php echo $bgImg; ?>">
-          </div>
+          if (get_the_post_thumbnail_url(get_the_ID())) : ?>
+            <div class="bg-center bg-no-repeat min-h-[400px] -my-0.5 bg-cover opacity-100" style="background-image: url('<?php the_post_thumbnail_url('large') ?>')"></div>
+          <?php else : ?>
+            <div class="bg-center bg-no-repeat min-h-[400px] -my-0.5 bg-[url('../images/logo-square.svg')] bg-contain opacity-10"></div>
+          <?php endif; ?>
         </div>
       <?php elseif ($args['post_type'] == 'partnership') : ?>
         <div class="grid md:grid-cols-2">
