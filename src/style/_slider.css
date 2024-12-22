@@ -179,10 +179,7 @@
 }
 
 .timeline-text {
-  @apply self-end h-44 overflow-y-auto;
-}
-
-.timeline-text p {
+  @apply self-end h-full overflow-y-auto;
 }
 
 .timeline-event:nth-child(even) .timeline-point {

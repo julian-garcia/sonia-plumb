@@ -52,7 +52,8 @@ $the_query = new WP_Query(
     while ($the_query->have_posts()) {
       $the_query->the_post();
       $dt = date("Y-m-d", strtotime(get_field('event_date')));
-      $calendar->add_event(get_the_ID(), $dt);
+      $days = strtotime(get_field('event_end_date')) - strtotime(get_field('event_date'));
+      $calendar->add_event(get_the_ID(), $dt, max(round($days / (60 * 60 * 24)) + 1, 1));
       wp_reset_postdata();
     }
     ?>
@@ -118,21 +119,10 @@ $the_query = new WP_Query(
               <a href="<?php echo get_the_permalink(get_field('stage')->ID); ?>" class="font-medium -mt-3 block">More info...</a>
             <?php endif; ?>
             <div class="flex gap-4 my-4">
-              <?php if (get_field('venue')) : ?>
-                <?php if (get_field('venue_link')) : ?>
-                  <a class="font-semibold" href="<?php echo get_field('venue_link'); ?>" target="_blank">
-                    <?php echo get_field('venue'); ?>
-                  </a>
-                <?php else : ?>
-                  <span class="font-semibold">
-                    <?php echo get_field('venue'); ?>
-                  </span>
-                <?php endif; ?>
-              <?php endif; ?>
               <div class="font-semibold">
                 <span><?php echo get_field('event_date'); ?></span>
                 <?php if (get_field('event_end_date')) : ?>
-                  <span>- <?php echo get_field('event_end_date'); ?></span>
+                  <span class="whitespace-nowrap">- <?php echo get_field('event_end_date'); ?></span>
                 <?php endif; ?>
               </div>
             </div>
@@ -146,6 +136,19 @@ $the_query = new WP_Query(
                 </span>
               <?php endif; ?>
             </div>
+            <?php if (get_field('venue')) : ?>
+              <div class="mb-4">
+                <?php if (get_field('venue_link')) : ?>
+                  <a class="font-semibold" href="<?php echo get_field('venue_link'); ?>" target="_blank">
+                    <?php echo get_field('venue'); ?>
+                  </a>
+                <?php else : ?>
+                  <span class="font-semibold">
+                    <?php echo get_field('venue'); ?>
+                  </span>
+                <?php endif; ?>
+              </div>
+            <?php endif; ?>
             <?php if (get_field('event_link')['url']) : ?>
               <a href="<?php echo get_field('event_link')['url']; ?>" class="button">
                 <?php echo get_field('event_link')['text'] ? get_field('event_link')['text'] : 'RSVP'; ?>

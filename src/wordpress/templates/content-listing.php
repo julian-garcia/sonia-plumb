@@ -12,7 +12,7 @@ if (isset($_GET['category'])) {
   $page = '1';
 }
 $currentPageNumber = (int)$page;
-$postsPerPage = 3;
+$postsPerPage = 20;
 $postCount = null;
 $readmore = array_search($selected, $args['categories']);
 if ($selected) {

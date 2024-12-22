@@ -41,6 +41,6 @@ Serve a local instance of WordPress, e.g. using LocalWP
 Clone this repository and go to the source folder and add a link to the local wordpress theme. The link name should be called `dist-local`.
 `ln -s /<path-of-local-WP>/wp-content/themes/sonia-plumb dist-local`
 
-To serve the theme locally, switch to the correct node version with `nvm use`, install dependencies with `npm i` and run `npm start`. This will build assests and watch for changes. Any css/js/php changes will result copy templates to the dist folder and rebuild assets.
+To serve the theme locally, switch to the correct node version with `nvm use`, install dependencies with `npm i` and run `npm start`. This will build assets and watch for changes. Any css/js/php changes will result copy templates to the dist folder and rebuild assets.
 
 To build the theme for production: `npm run build`. This builds assets, as above, and also packages the theme in to a zip file.

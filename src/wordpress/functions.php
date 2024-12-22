@@ -4,7 +4,6 @@ function theme_scripts()
 {
   $version = wp_get_theme()->get('Version');
   wp_enqueue_style('sonia-plumb', get_template_directory_uri() . '/assets/{index.css}', '', $version);
-  wp_enqueue_script('polyfill', 'https://polyfill.io/v3/polyfill.min.js', '', $version, true);
   wp_enqueue_script('sonia-plumb', get_template_directory_uri() . '/assets/{index.js}', '', $version, true);
   wp_enqueue_script('mailchimp', 'https://s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js', '', $version, true);
 }
@@ -41,7 +40,10 @@ function slide_post_type()
       'has_archive' => false,
       'show_in_rest' => false,
       'supports' => array(
-        'title', 'editor', 'thumbnail', 'excerpt'
+        'title',
+        'editor',
+        'thumbnail',
+        'excerpt'
       )
     )
   );
@@ -66,7 +68,10 @@ function works_post_type()
       'show_in_rest' => true,
       'taxonomies'  => array('category'),
       'supports' => array(
-        'title', 'editor', 'thumbnail', 'excerpt'
+        'title',
+        'editor',
+        'thumbnail',
+        'excerpt'
       )
     )
   );
@@ -92,7 +97,10 @@ function class_post_type()
       'show_in_rest' => true,
       'taxonomies'  => array('category'),
       'supports' => array(
-        'title', 'editor', 'thumbnail', 'excerpt'
+        'title',
+        'editor',
+        'thumbnail',
+        'excerpt'
       )
     )
   );
@@ -117,7 +125,10 @@ function team_post_type()
       'show_in_rest' => true,
       'taxonomies' => array('category'),
       'supports' => array(
-        'title', 'editor', 'thumbnail', 'excerpt'
+        'title',
+        'editor',
+        'thumbnail',
+        'excerpt'
       )
     )
   );
@@ -142,7 +153,10 @@ function event_post_type()
       'show_in_rest' => true,
       'taxonomies'  => array('category'),
       'supports' => array(
-        'title', 'editor', 'thumbnail', 'excerpt'
+        'title',
+        'editor',
+        'thumbnail',
+        'excerpt'
       )
     )
   );
@@ -166,7 +180,8 @@ function testimonial_post_type()
       'has_archive' => false,
       'show_in_rest' => true,
       'supports' => array(
-        'title', 'editor'
+        'title',
+        'editor'
       )
     )
   );
@@ -190,7 +205,8 @@ function timeline_post_type()
       'has_archive' => false,
       'show_in_rest' => true,
       'supports' => array(
-        'title', 'editor'
+        'title',
+        'editor'
       )
     )
   );
@@ -214,7 +230,9 @@ function partnership_post_type()
       'has_archive' => false,
       'show_in_rest' => true,
       'supports' => array(
-        'title', 'editor', 'thumbnail'
+        'title',
+        'editor',
+        'thumbnail'
       )
     )
   );
@@ -268,7 +286,7 @@ function partnerships_shortcode()
       'form_url' => '/partnerships',
       'default_category' => '',
       'categories'  => [],
-      'posts_page' => 5
+      'posts_page' => 20
     )
   );
   return ob_get_clean();
