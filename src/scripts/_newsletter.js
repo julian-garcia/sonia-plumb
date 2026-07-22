@@ -1,5 +1,5 @@
 const signUp = document.getElementById('signUp');
-const signUpForm = document.getElementById('mc-embedded-subscribe-form');
+const signUpForm = document.getElementById('signUpForm');
 
 signUp &&
   signUp.addEventListener('click', () => {
@@ -7,10 +7,7 @@ signUp &&
   });
 
 document.addEventListener('click', (e) => {
-  if (
-    e.target.id !== 'signUp' &&
-    !e.target.closest('#mc-embedded-subscribe-form')
-  ) {
+  if (e.target.id !== 'signUp' && !e.target.closest('#signUpForm')) {
     signUpForm.classList.remove('show');
   }
 });

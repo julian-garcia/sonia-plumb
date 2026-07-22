@@ -7,5 +7,5 @@ const archive = archiver('zip', {
 });
 
 archive.pipe(output);
-archive.directory('dist-local', false);
+archive.directory('./dist-local', false);
 archive.finalize();

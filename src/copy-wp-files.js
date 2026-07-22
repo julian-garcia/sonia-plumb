@@ -1,6 +1,9 @@
-import { cpSync, readlinkSync } from 'node:fs';
+import { cpSync, mkdirSync } from 'node:fs';
 
 export function copyFiles() {
-  const target = readlinkSync('./dist-local');
-  cpSync('./src/wordpress', target, { recursive: true });
+  mkdirSync('./dist-local', { recursive: true });
+
+  cpSync('./src/wordpress', './dist-local', {
+    recursive: true,
+  });
 }
